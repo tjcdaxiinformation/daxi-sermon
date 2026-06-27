@@ -1,0 +1,498 @@
+[slides]
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>為何要傳福音 - 大溪教會宣道週</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Lato:wght@400;700&family=Noto+Sans+TC:wght@300;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        /* 核心設計原則：專業、簡約、具備信仰的沉靜感 */
+        * { box-sizing: border-box; }
+        body {
+            background-color: #f3f4f6;
+            margin: 0;
+            padding: 32px;
+            display: grid;
+            justify-items: center;
+            gap: 40px;
+            color: #334155;
+            font-family: 'Noto Sans TC', sans-serif;
+        }
+
+        .slide-container {
+            width: 1280px;
+            height: 720px;
+            background-color: #FFF9F0; /* 溫暖的紙張色 */
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            overflow: hidden;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            padding: 60px;
+        }
+
+        /* 裝飾性背景元素：抽象優雅的曲線 */
+        .slide-container::after {
+            content: '';
+            position: absolute;
+            bottom: -50px;
+            right: -50px;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(217, 119, 6, 0.05) 0%, transparent 70%);
+            z-index: 0;
+        }
+
+        .content-area {
+            position: relative;
+            z-index: 1;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            width: 100%;
+        }
+
+        /* 字體規範 */
+        h1, h2, h3 {
+            font-family: 'Merriweather', 'Noto Sans TC', serif;
+            margin: 0;
+            color: #1e293b;
+        }
+
+        .slide-title {
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 40px;
+            border-left: 8px solid #d97706;
+            padding-left: 24px;
+            line-height: 1.2;
+        }
+
+        p, li {
+            font-size: 24px;
+            line-height: 1.6;
+            color: #475569;
+        }
+
+        /* 布局樣式定義 */
+        .title-layout {
+            text-align: center;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            border: 1px solid rgba(51, 65, 85, 0.1);
+            margin: 20px;
+            border-radius: 15px;
+        }
+
+        .title-layout h1 {
+            font-size: 82px;
+            color: #1e293b;
+            margin-bottom: 20px;
+        }
+
+        .subtitle {
+            font-size: 32px;
+            color: #d97706;
+            margin-bottom: 40px;
+            font-weight: 300;
+        }
+
+        .golden-text { color: #d97706; font-weight: 700; }
+
+        /* Timeline 樣式 */
+        .timeline-layout {
+            display: flex;
+            justify-content: space-between;
+            position: relative;
+            padding: 40px 0;
+            height: 100%;
+        }
+
+        .timeline-line {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: #e2e8f0;
+            z-index: 0;
+        }
+
+        .timeline-item {
+            width: 30%;
+            position: relative;
+            z-index: 1;
+            text-align: center;
+        }
+
+        .timeline-dot {
+            width: 24px;
+            height: 24px;
+            background: #d97706;
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            border: 6px solid #FFF9F0;
+        }
+
+        .timeline-item:nth-child(even) { margin-top: 250px; }
+        .timeline-item:nth-child(odd) { margin-bottom: 250px; }
+
+        /* Tiled樣式 */
+        .tiled-content {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            width: 100%;
+        }
+
+        .tile {
+            background: rgba(255, 255, 255, 0.5);
+            padding: 40px;
+            border-radius: 15px;
+            border: 1px solid #e2e8f0;
+            text-align: center;
+        }
+
+        .tile .icon {
+            font-size: 48px;
+            color: #d97706;
+            margin-bottom: 20px;
+        }
+
+        /* 圖片布局 */
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .image-wrapper {
+            width: 100%;
+            height: 450px;
+            border-radius: 15px;
+            overflow: hidden;
+            border: 10px solid white;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+        }
+
+        .image-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* 數據高亮 */
+        .highlight-numbers-layout {
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+        }
+
+        .number-box {
+            text-align: center;
+        }
+
+        .number {
+            font-size: 160px;
+            font-weight: 700;
+            color: #d97706;
+            font-family: 'Merriweather', serif;
+        }
+
+        .number-label {
+            font-size: 32px;
+            color: #334155;
+        }
+
+        /* 滿版圖片 */
+        .full-bg-image {
+            background-size: cover;
+            background-position: center;
+        }
+
+        .overlay {
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.6));
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 100px;
+        }
+
+        .overlay h2, .overlay p { color: white !important; border: none; }
+
+        /* 清單樣式 */
+        .bullet-list ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .bullet-list li {
+            position: relative;
+            padding-left: 50px;
+            margin-bottom: 25px;
+        }
+
+        .bullet-list i {
+            position: absolute;
+            left: 0;
+            top: 5px;
+            color: #d97706;
+            font-size: 28px;
+        }
+
+        /* Bleed Image Right */
+        .bleed-image-layout {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            padding: 0 !important;
+            align-items: start;
+        }
+        .bleed-text-side { padding: 80px 60px; }
+        .bleed-image-side { width: 100%; height: 720px; object-fit: cover; }
+
+    </style>
+</head>
+<body>
+
+    <!-- Slide 1: 封面 -->
+    <div class="slide-container" id="slide1">
+        <div class="title-layout">
+            <h1>為何要傳福音？</h1>
+            <p class="subtitle">大溪教會 宣道週專題證道回顧</p>
+            <p style="font-family: serif; font-style: italic; max-width: 800px;">
+                「神預定我們藉著主耶穌基督得救。」— 帖前 5:9
+            </p>
+        </div>
+    </div>
+
+    <!-- Slide 2: 宣道旅程 Timeline -->
+    <div class="slide-container" id="slide2">
+        <h2 class="slide-title">大溪教會的「宣道旅程」</h2>
+        <div class="content-area">
+            <div class="timeline-layout">
+                <div class="timeline-line"></div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <h3>星期一</h3>
+                    <p class="golden-text">聖工的價值</p>
+                    <p>認識傳福音的屬靈「意義」</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <h3>星期三</h3>
+                    <p class="golden-text">宣道的事務</p>
+                    <p>規劃實際執行的「腳步」</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <h3>今天起</h3>
+                    <p class="golden-text">為何傳福音</p>
+                    <p>如何傳 ➡️ 陪談與跟進</p>
+                </div>
+            </div>
+            <p style="text-align: center; font-style: italic; margin-top: 40px; color: #64748b;">
+                核心省思：像帶領孩童一樣，以「愛心、陪伴、耐心」帶人進入主圈。
+            </p>
+        </div>
+    </div>
+
+    <!-- Slide 3: 真教會的使命 -->
+    <div class="slide-container" id="slide3">
+        <h2 class="slide-title">真教會的終身使命</h2>
+        <div class="content-area">
+            <div class="tiled-content">
+                <div class="tile">
+                    <div class="icon"><i class="fa-solid fa-earth-asia"></i></div>
+                    <h3>對外：傳揚福音</h3>
+                    <p>引人歸真，擴張神國的四境。</p>
+                </div>
+                <div class="tile">
+                    <div class="icon"><i class="fa-solid fa-hands-holding-child"></i></div>
+                    <h3>對內：牧養主羊</h3>
+                    <p>建立教會，鞏固弟兄姊妹的信仰。</p>
+                </div>
+                <div class="tile">
+                    <div class="icon"><i class="fa-solid fa-lightbulb"></i></div>
+                    <h3>宣道意識的醒覺</h3>
+                    <p>宣道不是口號，而是每一天的生活意識。</p>
+                </div>
+            </div>
+            <div style="margin-top: 30px; padding: 20px; background: #fff; border-radius: 10px; border-left: 5px solid #d97706;">
+                <strong>案例分享：</strong>一位剛受洗的弟兄，透過簡單的禱告與邀約，一個月內就帶領了3位靈魂。
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 4: 三大信仰核心 -->
+    <div class="slide-container" id="slide4">
+        <h2 class="slide-title">我們為什麼要傳福音？</h2>
+        <div class="content-area">
+            <div class="tiled-content">
+                <div class="tile">
+                    <div class="icon"><i class="fa-solid fa-file-contract"></i></div>
+                    <h3>1. 根據</h3>
+                    <p>神的心意與命令</p>
+                </div>
+                <div class="tile">
+                    <div class="icon"><i class="fa-solid fa-id-card"></i></div>
+                    <h3>2. 差遣</h3>
+                    <p>我們的身分與責任</p>
+                </div>
+                <div class="tile">
+                    <div class="icon"><i class="fa-solid fa-gift"></i></div>
+                    <h3>3. 果效</h3>
+                    <p>生命的恩典與賞賜</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 5: 第一部分：根據 -->
+    <div class="slide-container" id="slide5">
+        <h2 class="slide-title">根據：主耶穌的直接命令</h2>
+        <div class="content-area">
+            <div class="two-column">
+                <div>
+                    <div class="bullet-list">
+                        <ul>
+                            <li><i class="fa-solid fa-person-walking-arrow-right"></i> <strong>馬太福音 28:19 ➡️「去！」</strong><br>離開舒適圈，主動跨出腳步。</li>
+                            <li><i class="fa-solid fa-comment-dots"></i> <strong>馬可福音 16:15 ➡️「傳給萬民聽」</strong><br>傳福音就像宣告。我們的「發聲」，是靈魂得救的起點。</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="image-wrapper">
+                    <!-- 使用獲取的圖片：open holy bible -->
+                    <img src="http://googleusercontent.com/image_collection/image_retrieval/18299367330637189771" alt="Open Bible">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 6: 根據：不願一人沉淪 -->
+    <div class="slide-container" id="slide6">
+        <h2 class="slide-title">根據：神不願一人沉淪</h2>
+        <div class="content-area">
+            <div class="tiled-content" style="grid-template-columns: 1fr 1fr;">
+                <div class="tile" style="text-align: left;">
+                    <h3 style="color: #d97706;">舊約的警示 (耶利米書)</h3>
+                    <p>耶利米忍受逼迫與嘲笑，神仍一次次打發先知去呼喚選民回頭。這體現了神極大的忍耐與愛。</p>
+                </div>
+                <div class="tile" style="text-align: left;">
+                    <h3 style="color: #d97706;">新約的恩典</h3>
+                    <p>「主不看為耽延...乃是寬容，不願有一人沉淪，乃願人人都悔改。」</p>
+                    <p><strong>神在寬容這世界，我們怎能保持沉默？</strong></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 7: 第二部分：差遣 (Bleed Image Right) -->
+    <div class="slide-container bleed-image-layout" id="slide7">
+        <div class="bleed-text-side">
+            <h2 class="slide-title">我們是有牌照的「守望者」</h2>
+            <div class="bullet-list">
+                <ul>
+                    <li><strong>天國的鑰匙：</strong>真教會握有全備得救的福份。我們若不開門，別人無法進來。</li>
+                    <li><strong>守望者的責任 (以西結書 3章)：</strong>
+                        <p>⚠️ 若不吹角 ─ 罪歸在守望者身上。</p>
+                        <p>✅ 若吹角了 ─ 守望者救了自己的靈魂。</p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <img class="bleed-image-side" src="http://googleusercontent.com/image_collection/image_retrieval/8869328195083413014" alt="Watchtower">
+    </div>
+
+    <!-- Slide 8: 差遣：能力源自聖靈 -->
+    <div class="slide-container" id="slide8">
+        <h2 class="slide-title">差遣：能力源自聖靈</h2>
+        <div class="content-area">
+            <div class="two-column" style="grid-template-columns: 400px 1fr;">
+                <div class="image-wrapper" style="border-radius: 50%; height: 400px; width: 400px;">
+                    <!-- 使用獲取的圖片：lit oil lamp -->
+                    <img src="http://googleusercontent.com/image_collection/image_retrieval/3328311285191929472" alt="Holy Spirit Light">
+                </div>
+                <div>
+                    <h3 style="color: #d97706; margin-bottom: 20px;">使徒行傳 1:8</h3>
+                    <p>「但聖靈降臨在你們身上，你們就必得著能力...作我的見證。」</p>
+                    <p style="margin-top: 20px; font-style: italic;">
+                        <strong>心靈共鳴：</strong>傳道分享初次敲門時，也希望「沒人在家」。但聖靈不是消除緊張，而是給予我們跨出去的「膽量」！
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 9: 見證共鳴 (Full Background Image) -->
+    <div class="slide-container full-bg-image" id="slide9" style="background-image: url('http://googleusercontent.com/image_collection/image_retrieval/13343759855175960939');">
+        <div class="overlay">
+            <h2 style="font-size: 56px; margin-bottom: 30px;">重病榻前那聲清醒的「好！」</h2>
+            <p style="font-size: 32px; max-width: 900px;">一位合夥朋友在瀕死昏迷時，執事在耳邊奮力一問：<br>「爺爺，來信耶穌好不好？」</p>
+            <p style="font-size: 32px; color: #fbbf24 !important; font-weight: 700;">爺爺回答：「嗯，好！」</p>
+            <p style="font-size: 24px; margin-top: 20px;">神蹟治癒，全家族一次 <strong>31人</strong> 受洗歸主！</p>
+            <p style="font-size: 22px; font-style: italic; border-top: 1px solid white; padding-top: 20px; margin-top: 30px;">
+                💡 默想：如果當時因為面子或禁忌不開口，這31個靈魂如今在哪裡？
+            </p>
+        </div>
+    </div>
+
+    <!-- Slide 10: 第三部分：果效 -->
+    <div class="slide-container" id="slide10">
+        <h2 class="slide-title">果效：比賺得全世界更有價值</h2>
+        <div class="content-area">
+            <div class="highlight-numbers-layout">
+                <div class="number-box">
+                    <div class="number">∞</div>
+                    <div class="number-label">靈魂的價值</div>
+                </div>
+                <div style="max-width: 600px;">
+                    <h3>靈魂的秤重</h3>
+                    <p>「人若賺得全世界，賠上自己的生命，有什麼益處呢？」</p>
+                    <p>賺得大溪、賺得桃園、賺得全世界，都比不上拯救一個靈魂。</p>
+                    <p style="margin-top: 20px;"><strong>做工的果效，會隨著我們到天家 (啟 14:13)</strong></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 11: 今日省思與行動 -->
+    <div class="slide-container" id="slide11">
+        <h2 class="slide-title">今日省思與行動</h2>
+        <div class="content-area">
+            <div class="bullet-list">
+                <ul>
+                    <li><i class="fa-solid fa-book-open"></i> 📖 <strong>我有「宣道意識」嗎？</strong><br>我是否常為身邊尚未得救的親友名字禱告？</li>
+                    <li><i class="fa-solid fa-door-open"></i> 🚪 <strong>我願意讓聖靈帶領，跨出舒適圈嗎？</strong><br>在按門鈴的恐懼中，體驗與神同工的奇妙。</li>
+                    <li><i class="fa-solid fa-mobile-screen-button"></i> 📱 <strong>善用工具：</strong><br>請分享福音節目或見證，讓媒體成為你與朋友分享的橋樑。</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 12: 結語禱告 -->
+    <div class="slide-container" id="slide12">
+        <div class="title-layout" style="border: none;">
+            <i class="fa-solid fa-hands-praying" style="font-size: 80px; color: #d97706; margin-bottom: 30px;"></i>
+            <h2 style="font-size: 48px; margin-bottom: 40px;">「我們白白地得來，也要白白地捨去。」</h2>
+            <p style="font-size: 28px; max-width: 800px; line-height: 1.8;">
+                願我們都成為神家裡，那忠心、勇敢、吹響號角的守望者。<br>
+                <strong>阿門。</strong>
+            </p>
+        </div>
+    </div>
+
+</body>
+</html>
+
