@@ -1,498 +1,1257 @@
-[slides]
+```html
 <!DOCTYPE html>
 <html lang="zh-TW">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>為何要傳福音 - 大溪教會宣道週</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Lato:wght@400;700&family=Noto+Sans+TC:wght@300;500;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <title>真耶穌教會大溪教會 - 宣道週行動教戰手札</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        navy: {
+                            50: '#f0f7ff',
+                            100: '#e0effe',
+                            800: '#075985',
+                            900: '#0c4a6e',
+                            950: '#031b2e'
+                        },
+                        tjc: {
+                            light: '#e0f2fe',
+                            DEFAULT: '#0284c7',
+                            dark: '#0369a1',
+                            gold: '#f59e0b',
+                            wood: '#fef3c7'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'sans-serif'],
+                        serif: ['Georgia', 'Cambria', '"Times New Roman"', 'Times', 'serif']
+                    }
+                }
+            }
+        }
+    </script>
     <style>
-        /* 核心設計原則：專業、簡約、具備信仰的沉靜感 */
-        * { box-sizing: border-box; }
-        body {
-            background-color: #f3f4f6;
-            margin: 0;
-            padding: 32px;
-            display: grid;
-            justify-items: center;
-            gap: 40px;
-            color: #334155;
-            font-family: 'Noto Sans TC', sans-serif;
+        html {
+            scroll-behavior: smooth;
         }
-
-        .slide-container {
-            width: 1280px;
-            height: 720px;
-            background-color: #FFF9F0; /* 溫暖的紙張色 */
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-            overflow: hidden;
-            position: relative;
-            display: flex;
-            flex-direction: column;
-            padding: 60px;
+        .custom-scroll::-webkit-scrollbar {
+            width: 6px;
         }
-
-        /* 裝飾性背景元素：抽象優雅的曲線 */
-        .slide-container::after {
-            content: '';
-            position: absolute;
-            bottom: -50px;
-            right: -50px;
-            width: 300px;
-            height: 300px;
-            background: radial-gradient(circle, rgba(217, 119, 6, 0.05) 0%, transparent 70%);
-            z-index: 0;
+        .custom-scroll::-webkit-scrollbar-track {
+            background: #031b2e;
         }
-
-        .content-area {
-            position: relative;
-            z-index: 1;
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            width: 100%;
+        .custom-scroll::-webkit-scrollbar-thumb {
+            background: #1e293b;
+            border-radius: 3px;
         }
-
-        /* 字體規範 */
-        h1, h2, h3 {
-            font-family: 'Merriweather', 'Noto Sans TC', serif;
-            margin: 0;
-            color: #1e293b;
+        .custom-scroll::-webkit-scrollbar-thumb:hover {
+            background: #334155;
         }
-
-        .slide-title {
-            font-size: 48px;
-            font-weight: 700;
-            margin-bottom: 40px;
-            border-left: 8px solid #d97706;
-            padding-left: 24px;
-            line-height: 1.2;
+        /* Page transitions */
+        .page-fade {
+            transition: opacity 0.25s ease-in-out, transform 0.25s ease-in-out;
         }
-
-        p, li {
-            font-size: 24px;
-            line-height: 1.6;
-            color: #475569;
+        /* Binder effect ring background style */
+        .binder-ring {
+            background: linear-gradient(90deg, #e2e8f0 0%, #cbd5e1 50%, #94a3b8 100%);
         }
-
-        /* 布局樣式定義 */
-        .title-layout {
-            text-align: center;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            border: 1px solid rgba(51, 65, 85, 0.1);
-            margin: 20px;
-            border-radius: 15px;
-        }
-
-        .title-layout h1 {
-            font-size: 82px;
-            color: #1e293b;
-            margin-bottom: 20px;
-        }
-
-        .subtitle {
-            font-size: 32px;
-            color: #d97706;
-            margin-bottom: 40px;
-            font-weight: 300;
-        }
-
-        .golden-text { color: #d97706; font-weight: 700; }
-
-        /* Timeline 樣式 */
-        .timeline-layout {
-            display: flex;
-            justify-content: space-between;
-            position: relative;
-            padding: 40px 0;
-            height: 100%;
-        }
-
-        .timeline-line {
-            position: absolute;
-            top: 50%;
-            left: 0;
-            width: 100%;
-            height: 2px;
-            background: #e2e8f0;
-            z-index: 0;
-        }
-
-        .timeline-item {
-            width: 30%;
-            position: relative;
-            z-index: 1;
-            text-align: center;
-        }
-
-        .timeline-dot {
-            width: 24px;
-            height: 24px;
-            background: #d97706;
-            border-radius: 50%;
-            margin: 0 auto 20px;
-            border: 6px solid #FFF9F0;
-        }
-
-        .timeline-item:nth-child(even) { margin-top: 250px; }
-        .timeline-item:nth-child(odd) { margin-bottom: 250px; }
-
-        /* Tiled樣式 */
-        .tiled-content {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 30px;
-            width: 100%;
-        }
-
-        .tile {
-            background: rgba(255, 255, 255, 0.5);
-            padding: 40px;
-            border-radius: 15px;
-            border: 1px solid #e2e8f0;
-            text-align: center;
-        }
-
-        .tile .icon {
-            font-size: 48px;
-            color: #d97706;
-            margin-bottom: 20px;
-        }
-
-        /* 圖片布局 */
-        .two-column {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
-            align-items: center;
-        }
-
-        .image-wrapper {
-            width: 100%;
-            height: 450px;
-            border-radius: 15px;
-            overflow: hidden;
-            border: 10px solid white;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
-        }
-
-        .image-wrapper img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        /* 數據高亮 */
-        .highlight-numbers-layout {
-            display: flex;
-            align-items: center;
-            justify-content: space-around;
-        }
-
-        .number-box {
-            text-align: center;
-        }
-
-        .number {
-            font-size: 160px;
-            font-weight: 700;
-            color: #d97706;
-            font-family: 'Merriweather', serif;
-        }
-
-        .number-label {
-            font-size: 32px;
-            color: #334155;
-        }
-
-        /* 滿版圖片 */
-        .full-bg-image {
-            background-size: cover;
-            background-position: center;
-        }
-
-        .overlay {
-            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.6));
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            padding: 100px;
-        }
-
-        .overlay h2, .overlay p { color: white !important; border: none; }
-
-        /* 清單樣式 */
-        .bullet-list ul {
-            list-style: none;
-            padding: 0;
-        }
-
-        .bullet-list li {
-            position: relative;
-            padding-left: 50px;
-            margin-bottom: 25px;
-        }
-
-        .bullet-list i {
-            position: absolute;
-            left: 0;
-            top: 5px;
-            color: #d97706;
-            font-size: 28px;
-        }
-
-        /* Bleed Image Right */
-        .bleed-image-layout {
-            display: grid;
-            grid-template-columns: repeat(2, minmax(0, 1fr));
-            padding: 0 !important;
-            align-items: start;
-        }
-        .bleed-text-side { padding: 80px 60px; }
-        .bleed-image-side { width: 100%; height: 720px; object-fit: cover; }
-
     </style>
 </head>
-<body>
+<body class="bg-gradient-to-b from-slate-950 via-cyan-950 to-slate-900 min-h-screen text-slate-100 font-sans antialiased selection:bg-sky-500 selection:text-white">
 
-    <!-- Slide 1: 封面 -->
-    <div class="slide-container" id="slide1">
-        <div class="title-layout">
-            <h1>為何要傳福音？</h1>
-            <p class="subtitle">大溪教會 宣道週專題證道回顧</p>
-            <p style="font-family: serif; font-style: italic; max-width: 800px;">
-                「神預定我們藉著主耶穌基督得救。」— 帖前 5:9
-            </p>
-        </div>
-    </div>
+    <!-- Toast Notification Overlay -->
+    <div id="toast-overlay" class="fixed bottom-8 right-8 z-50 pointer-events-none flex flex-col gap-2"></div>
 
-    <!-- Slide 2: 宣道旅程 Timeline -->
-    <div class="slide-container" id="slide2">
-        <h2 class="slide-title">大溪教會的「宣道旅程」</h2>
-        <div class="content-area">
-            <div class="timeline-layout">
-                <div class="timeline-line"></div>
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <h3>星期一</h3>
-                    <p class="golden-text">聖工的價值</p>
-                    <p>認識傳福音的屬靈「意義」</p>
+    <!-- Navigation Header -->
+    <nav class="sticky top-0 z-40 bg-slate-950/95 backdrop-blur border-b border-sky-500/10 py-3.5 px-4 md:px-8 shadow-md">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+            <div class="flex items-center space-x-3">
+                <div class="w-10 h-10 bg-gradient-to-tr from-sky-500 to-indigo-600 rounded-xl flex items-center justify-center shadow-lg shadow-sky-500/20">
+                    <svg class="w-6 h-6 text-white animate-pulse" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                        <path d="M12 2L2 22h20L12 2z" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M12 8v10" stroke-linecap="round"/>
+                        <path d="M9 12h6" stroke-linecap="round"/>
+                    </svg>
                 </div>
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <h3>星期三</h3>
-                    <p class="golden-text">宣道的事務</p>
-                    <p>規劃實際執行的「腳步」</p>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <h3>今天起</h3>
-                    <p class="golden-text">為何傳福音</p>
-                    <p>如何傳 ➡️ 陪談與跟進</p>
-                </div>
-            </div>
-            <p style="text-align: center; font-style: italic; margin-top: 40px; color: #64748b;">
-                核心省思：像帶領孩童一樣，以「愛心、陪伴、耐心」帶人進入主圈。
-            </p>
-        </div>
-    </div>
-
-    <!-- Slide 3: 真教會的使命 -->
-    <div class="slide-container" id="slide3">
-        <h2 class="slide-title">真教會的終身使命</h2>
-        <div class="content-area">
-            <div class="tiled-content">
-                <div class="tile">
-                    <div class="icon"><i class="fa-solid fa-earth-asia"></i></div>
-                    <h3>對外：傳揚福音</h3>
-                    <p>引人歸真，擴張神國的四境。</p>
-                </div>
-                <div class="tile">
-                    <div class="icon"><i class="fa-solid fa-hands-holding-child"></i></div>
-                    <h3>對內：牧養主羊</h3>
-                    <p>建立教會，鞏固弟兄姊妹的信仰。</p>
-                </div>
-                <div class="tile">
-                    <div class="icon"><i class="fa-solid fa-lightbulb"></i></div>
-                    <h3>宣道意識的醒覺</h3>
-                    <p>宣道不是口號，而是每一天的生活意識。</p>
-                </div>
-            </div>
-            <div style="margin-top: 30px; padding: 20px; background: #fff; border-radius: 10px; border-left: 5px solid #d97706;">
-                <strong>案例分享：</strong>一位剛受洗的弟兄，透過簡單的禱告與邀約，一個月內就帶領了3位靈魂。
-            </div>
-        </div>
-    </div>
-
-    <!-- Slide 4: 三大信仰核心 -->
-    <div class="slide-container" id="slide4">
-        <h2 class="slide-title">我們為什麼要傳福音？</h2>
-        <div class="content-area">
-            <div class="tiled-content">
-                <div class="tile">
-                    <div class="icon"><i class="fa-solid fa-file-contract"></i></div>
-                    <h3>1. 根據</h3>
-                    <p>神的心意與命令</p>
-                </div>
-                <div class="tile">
-                    <div class="icon"><i class="fa-solid fa-id-card"></i></div>
-                    <h3>2. 差遣</h3>
-                    <p>我們的身分與責任</p>
-                </div>
-                <div class="tile">
-                    <div class="icon"><i class="fa-solid fa-gift"></i></div>
-                    <h3>3. 果效</h3>
-                    <p>生命的恩典與賞賜</p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Slide 5: 第一部分：根據 -->
-    <div class="slide-container" id="slide5">
-        <h2 class="slide-title">根據：主耶穌的直接命令</h2>
-        <div class="content-area">
-            <div class="two-column">
                 <div>
-                    <div class="bullet-list">
-                        <ul>
-                            <li><i class="fa-solid fa-person-walking-arrow-right"></i> <strong>馬太福音 28:19 ➡️「去！」</strong><br>離開舒適圈，主動跨出腳步。</li>
-                            <li><i class="fa-solid fa-comment-dots"></i> <strong>馬可福音 16:15 ➡️「傳給萬民聽」</strong><br>傳福音就像宣告。我們的「發聲」，是靈魂得救的起點。</li>
-                        </ul>
+                    <h1 class="text-base md:text-lg font-bold text-slate-100 tracking-wider">真耶穌教會大溪教會</h1>
+                    <p class="text-[10px] text-slate-400 font-medium">TRUE JESUS CHURCH DAXI · 宣道週行動教戰系統</p>
+                </div>
+            </div>
+            
+            <!-- Quick Menu -->
+            <div class="flex items-center space-x-3 text-xs md:text-sm font-semibold">
+                <a href="#notebook-workspace" class="px-3.5 py-2 rounded-xl bg-slate-900 border border-slate-800 text-sky-400 hover:text-sky-300 transition-colors flex items-center gap-1.5">
+                    <i data-lucide="book-open" class="w-4 h-4"></i> 5堂教戰手札
+                </a>
+                <a href="#mission-badge-section" class="px-3.5 py-2 rounded-xl bg-sky-950/60 border border-sky-500/20 text-sky-300 hover:text-white transition-colors flex items-center gap-1.5">
+                    <i data-lucide="award" class="w-4 h-4"></i> 使命委任狀
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header Hero Banner -->
+    <header class="relative overflow-hidden py-16 px-4 md:px-8 bg-cover bg-center" style="background-image: linear-gradient(to bottom, rgba(2, 6, 23, 0.9), rgba(15, 23, 42, 0.95)), url('https://images.unsplash.com/photo-1518156677180-95a2893f3e9f?auto=format&fit=crop&w=1200&q=80');">
+        <!-- Abstract glowing circles -->
+        <div class="absolute -right-32 -top-32 w-96 h-96 bg-sky-500/10 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="absolute -left-32 -bottom-32 w-96 h-96 bg-indigo-500/10 rounded-full blur-3xl pointer-events-none"></div>
+        
+        <div class="max-w-4xl mx-auto text-center relative z-10 space-y-6">
+            <span class="px-3.5 py-1 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-400 text-xs font-bold tracking-widest inline-flex items-center gap-1.5">
+                <i data-lucide="shield-check" class="w-4 h-4"></i> 興旺福音 · 引人歸真 · 擴張四境
+            </span>
+            <h1 class="text-3xl md:text-5xl lg:text-6xl font-black text-transparent bg-clip-text bg-gradient-to-r from-sky-400 via-blue-300 to-indigo-300 tracking-tight leading-tight">
+                宣道週終極行動教戰手札
+            </h1>
+            <p class="text-sm md:text-base text-slate-300 max-w-2xl mx-auto leading-relaxed">
+                福音是大溪教會每位信徒不可推卸的聖命。本手札將宣道週五堂核心課程完美整合，提供<span class="text-sky-400 font-bold">精細逐字稿</span>、<span class="text-sky-400 font-bold">大字體投影簡報</span>與<span class="text-sky-400 font-bold">行動實踐指南</span>。裝備您勇敢走出去、向人訴說、帶人進真教會！
+            </p>
+
+            <!-- Global statistics tracker -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-2xl mx-auto pt-4">
+                <div class="bg-slate-950/80 border border-slate-800 p-3 rounded-2xl">
+                    <p class="text-xl md:text-2xl font-black text-sky-400" id="stat-completed">0 / 5</p>
+                    <p class="text-[10px] text-slate-500 font-bold mt-0.5">已研讀課程</p>
+                </div>
+                <div class="bg-slate-950/80 border border-slate-800 p-3 rounded-2xl">
+                    <p class="text-xl md:text-2xl font-black text-emerald-400" id="stat-quizzes">0 / 5</p>
+                    <p class="text-[10px] text-slate-500 font-bold mt-0.5">問答完成度</p>
+                </div>
+                <div class="bg-slate-950/80 border border-slate-800 p-3 rounded-2xl">
+                    <p class="text-xl md:text-2xl font-black text-amber-500" id="stat-commit">尚未</p>
+                    <p class="text-[10px] text-slate-500 font-bold mt-0.5">簽署使命委任</p>
+                </div>
+                <div class="bg-slate-950/80 border border-slate-800 p-3 rounded-2xl">
+                    <p class="text-xl md:text-2xl font-black text-indigo-400" id="stat-level">初信徒</p>
+                    <p class="text-[10px] text-slate-500 font-bold mt-0.5">屬靈裝備階級</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Workspace (Binder Binder Style) -->
+    <main id="notebook-workspace" class="max-w-7xl w-full mx-auto px-4 py-12 md:px-8">
+        
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+            
+            <!-- Left Binder Spine Side Navigation -->
+            <div class="lg:col-span-4 space-y-4">
+                <div class="bg-slate-900 border border-slate-800 rounded-3xl p-5 shadow-2xl space-y-4">
+                    <div class="flex items-center justify-between border-b border-slate-800 pb-3">
+                        <h3 class="text-xs font-black text-slate-400 uppercase tracking-widest flex items-center gap-1.5">
+                            <i data-lucide="book" class="w-4 h-4 text-sky-400"></i> 教戰手札課程目錄
+                        </h3>
+                        <span class="text-[10px] bg-sky-500/10 border border-sky-500/20 text-sky-400 px-2 py-0.5 rounded-full font-bold" id="sidebar-progress-label">0% 完訓</span>
+                    </div>
+
+                    <!-- Sidebar Lesson tabs -->
+                    <div class="space-y-2.5" id="lesson-tab-list">
+                        <!-- Filled dynamically by JS -->
+                    </div>
+
+                    <!-- Progress bar -->
+                    <div class="space-y-1.5 pt-2">
+                        <div class="h-2 w-full bg-slate-950 rounded-full overflow-hidden border border-slate-800">
+                            <div id="master-progress-fill" class="h-full bg-gradient-to-r from-sky-500 to-indigo-500 rounded-full transition-all duration-300" style="width: 0%"></div>
+                        </div>
                     </div>
                 </div>
-                <div class="image-wrapper">
-                    <!-- 使用獲取的圖片：open holy bible -->
-                    <img src="http://googleusercontent.com/image_collection/image_retrieval/18299367330637189771" alt="Open Bible">
+
+                <!-- Global Reset widget -->
+                <div class="bg-slate-900/40 border border-slate-800 rounded-2xl p-4 flex items-center justify-between">
+                    <div>
+                        <h4 class="text-xs font-bold text-slate-300">本地研習進度數據</h4>
+                        <p class="text-[10px] text-slate-500 mt-0.5">系統會自動保存您的所有心得與問答成果</p>
+                    </div>
+                    <button onclick="triggerResetSystem()" class="text-xs text-rose-400 hover:text-rose-300 font-bold flex items-center gap-1 transition-colors">
+                        <i data-lucide="rotate-ccw" class="w-3.5 h-3.5"></i> 清除重學
+                    </button>
                 </div>
             </div>
-        </div>
-    </div>
 
-    <!-- Slide 6: 根據：不願一人沉淪 -->
-    <div class="slide-container" id="slide6">
-        <h2 class="slide-title">根據：神不願一人沉淪</h2>
-        <div class="content-area">
-            <div class="tiled-content" style="grid-template-columns: 1fr 1fr;">
-                <div class="tile" style="text-align: left;">
-                    <h3 style="color: #d97706;">舊約的警示 (耶利米書)</h3>
-                    <p>耶利米忍受逼迫與嘲笑，神仍一次次打發先知去呼喚選民回頭。這體現了神極大的忍耐與愛。</p>
-                </div>
-                <div class="tile" style="text-align: left;">
-                    <h3 style="color: #d97706;">新約的恩典</h3>
-                    <p>「主不看為耽延...乃是寬容，不願有一人沉淪，乃願人人都悔改。」</p>
-                    <p><strong>神在寬容這世界，我們怎能保持沉默？</strong></p>
+            <!-- Right Immersive Binder Notebook Sheet -->
+            <div class="lg:col-span-8">
+                <!-- Outer Ring Binder Card Container -->
+                <div class="relative bg-slate-900 border border-slate-800 rounded-3xl shadow-2xl flex flex-col min-h-[700px] overflow-hidden">
+                    
+                    <!-- Top Ribbon Navigator for Content sections within the active Lesson -->
+                    <div class="bg-slate-950/80 border-b border-slate-800 p-2 flex items-center justify-around text-xs md:text-sm font-semibold select-none">
+                        <button onclick="setLessonSection('verbatim')" id="ribbon-verbatim" class="flex-1 py-3 text-center transition-all border-b-2 border-sky-500 text-sky-400">
+                            <span class="flex items-center justify-center gap-1.5"><i data-lucide="file-text" class="w-4 h-4"></i> 1. 分段逐字稿</span>
+                        </button>
+                        <button onclick="setLessonSection('ppt')" id="ribbon-ppt" class="flex-1 py-3 text-center transition-all border-b-2 border-transparent text-slate-400 hover:text-slate-200">
+                            <span class="flex items-center justify-center gap-1.5"><i data-lucide="presentation" class="w-4 h-4"></i> 2. 精美顯眼 PPT</span>
+                        </button>
+                        <button onclick="setLessonSection('interact')" id="ribbon-interact" class="flex-1 py-3 text-center transition-all border-b-2 border-transparent text-slate-400 hover:text-slate-200">
+                            <span class="flex items-center justify-center gap-1.5"><i data-lucide="message-square" class="w-4 h-4"></i> 3. 隨堂回饋與問答</span>
+                        </button>
+                    </div>
+
+                    <!-- Spiral Ring Bind Visual Effect (Repeated rings on the far left of the inner page) -->
+                    <div class="absolute left-0 top-14 bottom-0 w-6 flex flex-col justify-around py-8 pointer-events-none select-none z-10">
+                        <div class="w-5 h-2.5 binder-ring rounded-r-md border border-slate-400 opacity-60 ml-0.5"></div>
+                        <div class="w-5 h-2.5 binder-ring rounded-r-md border border-slate-400 opacity-60 ml-0.5"></div>
+                        <div class="w-5 h-2.5 binder-ring rounded-r-md border border-slate-400 opacity-60 ml-0.5"></div>
+                        <div class="w-5 h-2.5 binder-ring rounded-r-md border border-slate-400 opacity-60 ml-0.5"></div>
+                        <div class="w-5 h-2.5 binder-ring rounded-r-md border border-slate-400 opacity-60 ml-0.5"></div>
+                        <div class="w-5 h-2.5 binder-ring rounded-r-md border border-slate-400 opacity-60 ml-0.5"></div>
+                        <div class="w-5 h-2.5 binder-ring rounded-r-md border border-slate-400 opacity-60 ml-0.5"></div>
+                        <div class="w-5 h-2.5 binder-ring rounded-r-md border border-slate-400 opacity-60 ml-0.5"></div>
+                        <div class="w-5 h-2.5 binder-ring rounded-r-md border border-slate-400 opacity-60 ml-0.5"></div>
+                        <div class="w-5 h-2.5 binder-ring rounded-r-md border border-slate-400 opacity-60 ml-0.5"></div>
+                    </div>
+
+                    <!-- Inner Page Content Container -->
+                    <div class="pl-10 pr-6 py-8 flex-1 flex flex-col relative" id="binder-content-sheet">
+                        
+                        <!-- Page Title Header -->
+                        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-800 pb-4 mb-6">
+                            <div>
+                                <span id="sheet-meta-badge" class="px-2.5 py-0.5 rounded bg-sky-500/10 border border-sky-500/20 text-sky-400 text-[10px] font-bold tracking-widest uppercase">
+                                    LESSON 01
+                                </span>
+                                <h2 id="sheet-title" class="text-xl md:text-2xl font-black text-slate-100 tracking-tight mt-1">
+                                    載入中...
+                                </h2>
+                                <p id="sheet-speaker" class="text-xs text-slate-400 mt-0.5">
+                                    講員：載入中...
+                                </p>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <button onclick="toggleLessonCompleteState()" id="btn-toggle-complete" class="w-full sm:w-auto px-4 py-2 rounded-xl text-xs font-bold transition-all border flex items-center justify-center gap-1.5 shadow-md">
+                                    <i data-lucide="check-circle" class="w-4 h-4"></i>
+                                    <span>標記本課已研讀</span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Active Sub-section Display Block -->
+                        <div class="flex-1 flex flex-col justify-between" id="active-sub-section-container">
+                            <!-- Filled dynamically by Section Switcher -->
+                        </div>
+
+                    </div>
                 </div>
             </div>
-        </div>
-    </div>
 
-    <!-- Slide 7: 第二部分：差遣 (Bleed Image Right) -->
-    <div class="slide-container bleed-image-layout" id="slide7">
-        <div class="bleed-text-side">
-            <h2 class="slide-title">我們是有牌照的「守望者」</h2>
-            <div class="bullet-list">
-                <ul>
-                    <li><strong>天國的鑰匙：</strong>真教會握有全備得救的福份。我們若不開門，別人無法進來。</li>
-                    <li><strong>守望者的責任 (以西結書 3章)：</strong>
-                        <p>⚠️ 若不吹角 ─ 罪歸在守望者身上。</p>
-                        <p>✅ 若吹角了 ─ 守望者救了自己的靈魂。</p>
-                    </li>
-                </ul>
+        </div>
+    </main>
+
+    <!-- Mission Commitment Badge Certificate (得救使命承諾書) -->
+    <section id="mission-badge-section" class="max-w-7xl mx-auto px-4 py-12 md:px-8 border-t border-slate-900">
+        <div class="max-w-3xl mx-auto bg-slate-900 border border-slate-800 rounded-3xl p-6 md:p-10 shadow-2xl space-y-6 relative overflow-hidden">
+            <!-- Background glow -->
+            <div class="absolute -right-16 -bottom-16 text-indigo-500/5 rotate-12">
+                <i data-lucide="shield-check" class="w-64 h-64"></i>
             </div>
-        </div>
-        <img class="bleed-image-side" src="http://googleusercontent.com/image_collection/image_retrieval/8869328195083413014" alt="Watchtower">
-    </div>
 
-    <!-- Slide 8: 差遣：能力源自聖靈 -->
-    <div class="slide-container" id="slide8">
-        <h2 class="slide-title">差遣：能力源自聖靈</h2>
-        <div class="content-area">
-            <div class="two-column" style="grid-template-columns: 400px 1fr;">
-                <div class="image-wrapper" style="border-radius: 50%; height: 400px; width: 400px;">
-                    <!-- 使用獲取的圖片：lit oil lamp -->
-                    <img src="http://googleusercontent.com/image_collection/image_retrieval/3328311285191929472" alt="Holy Spirit Light">
+            <div class="text-center space-y-2 relative z-10">
+                <span class="px-2.5 py-0.5 rounded bg-amber-500/10 border border-amber-500/20 text-amber-400 text-xs font-bold uppercase tracking-wider">天國福音守望證書</span>
+                <h3 class="text-2xl md:text-3xl font-black text-slate-100">大溪教會「宣道大使」使命宣誓</h3>
+                <p class="text-xs text-slate-400">當五堂課程完訓，在下面簽下您的聖名，立定心志勇敢走出去，向人訴說，帶人進真教會！</p>
+            </div>
+
+            <!-- Input state -->
+            <div id="commitment-input-form" class="space-y-4 max-w-md mx-auto relative z-10 pt-4">
+                <div class="space-y-2">
+                    <label class="text-xs text-slate-300 font-bold block">我是大溪真耶穌教會信徒（請輸入聖名/姓名）：</label>
+                    <input type="text" id="signer-name-input" placeholder="請輸入您的名字" class="w-full bg-slate-950 border border-slate-800 text-slate-200 text-sm rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-sky-500">
                 </div>
-                <div>
-                    <h3 style="color: #d97706; margin-bottom: 20px;">使徒行傳 1:8</h3>
-                    <p>「但聖靈降臨在你們身上，你們就必得著能力...作我的見證。」</p>
-                    <p style="margin-top: 20px; font-style: italic;">
-                        <strong>心靈共鳴：</strong>傳道分享初次敲門時，也希望「沒人在家」。但聖靈不是消除緊張，而是給予我們跨出去的「膽量」！
+                <button onclick="triggerCommitmentSign()" class="w-full bg-gradient-to-r from-sky-600 to-indigo-600 hover:from-sky-500 hover:to-indigo-500 text-white font-bold text-sm py-3 rounded-xl transition-all shadow-lg shadow-sky-600/10 flex items-center justify-center gap-1.5">
+                    <i data-lucide="file-signature" class="w-4 h-4"></i>
+                    <span>誓願為主吹角，立定承諾！</span>
+                </button>
+            </div>
+
+            <!-- Certified Badge Output -->
+            <div id="commitment-badge-certified" class="hidden bg-gradient-to-br from-indigo-950/40 via-slate-950 to-indigo-950/20 border border-amber-500/30 rounded-2xl p-6 md:p-8 text-center space-y-4 relative z-10">
+                <div class="w-16 h-16 bg-amber-500/10 border border-amber-500/30 rounded-full flex items-center justify-center mx-auto text-amber-400 animate-bounce" style="animation-duration: 4s;">
+                    <i data-lucide="shield-check" class="w-8 h-8"></i>
+                </div>
+                <div class="space-y-1">
+                    <p class="text-xs text-amber-400 font-black tracking-widest uppercase">真耶穌教會大溪教會 · 宣道委員會</p>
+                    <h4 class="text-xl md:text-2xl font-black text-slate-200">得救全輩福音宣道使者委任書</h4>
+                </div>
+                <div class="border-y border-amber-500/10 py-4 max-w-lg mx-auto">
+                    <p class="text-xs md:text-sm text-slate-300 leading-relaxed font-medium">
+                        大溪教會信徒 <span id="certified-signer-name" class="font-black text-amber-300 border-b border-amber-300/40 pb-0.5 px-1.5 text-base">陳慕主</span> 同工！您已在主耶穌與神面前立定心志，不再退後、挪去安逸與膽怯，將「白白得來」的救恩「白白捨去」。在工作、生活與校園中勇敢走出去、勇敢向人訴說、勇敢帶領人來到真教會接受流動活水全身洗禮。
                     </p>
                 </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Slide 9: 見證共鳴 (Full Background Image) -->
-    <div class="slide-container full-bg-image" id="slide9" style="background-image: url('http://googleusercontent.com/image_collection/image_retrieval/13343759855175960939');">
-        <div class="overlay">
-            <h2 style="font-size: 56px; margin-bottom: 30px;">重病榻前那聲清醒的「好！」</h2>
-            <p style="font-size: 32px; max-width: 900px;">一位合夥朋友在瀕死昏迷時，執事在耳邊奮力一問：<br>「爺爺，來信耶穌好不好？」</p>
-            <p style="font-size: 32px; color: #fbbf24 !important; font-weight: 700;">爺爺回答：「嗯，好！」</p>
-            <p style="font-size: 24px; margin-top: 20px;">神蹟治癒，全家族一次 <strong>31人</strong> 受洗歸主！</p>
-            <p style="font-size: 22px; font-style: italic; border-top: 1px solid white; padding-top: 20px; margin-top: 30px;">
-                💡 默想：如果當時因為面子或禁忌不開口，這31個靈魂如今在哪裡？
-            </p>
-        </div>
-    </div>
-
-    <!-- Slide 10: 第三部分：果效 -->
-    <div class="slide-container" id="slide10">
-        <h2 class="slide-title">果效：比賺得全世界更有價值</h2>
-        <div class="content-area">
-            <div class="highlight-numbers-layout">
-                <div class="number-box">
-                    <div class="number">∞</div>
-                    <div class="number-label">靈魂的價值</div>
-                </div>
-                <div style="max-width: 600px;">
-                    <h3>靈魂的秤重</h3>
-                    <p>「人若賺得全世界，賠上自己的生命，有什麼益處呢？」</p>
-                    <p>賺得大溪、賺得桃園、賺得全世界，都比不上拯救一個靈魂。</p>
-                    <p style="margin-top: 20px;"><strong>做工的果效，會隨著我們到天家 (啟 14:13)</strong></p>
+                <div class="flex flex-col sm:flex-row justify-center items-center gap-3 pt-2">
+                    <button onclick="triggerResetCommitment()" class="text-xs text-slate-500 hover:text-slate-400 transition-colors">修改聖名</button>
+                    <button onclick="triggerExportActionReport()" class="px-4 py-2 bg-slate-950 border border-slate-800 rounded-xl text-xs font-bold text-sky-400 hover:bg-slate-900 transition-colors flex items-center gap-1.5">
+                        <i data-lucide="download" class="w-3.5 h-3.5"></i> 一鍵導出心得與實踐報告
+                    </button>
                 </div>
             </div>
-        </div>
-    </div>
 
-    <!-- Slide 11: 今日省思與行動 -->
-    <div class="slide-container" id="slide11">
-        <h2 class="slide-title">今日省思與行動</h2>
-        <div class="content-area">
-            <div class="bullet-list">
-                <ul>
-                    <li><i class="fa-solid fa-book-open"></i> 📖 <strong>我有「宣道意識」嗎？</strong><br>我是否常為身邊尚未得救的親友名字禱告？</li>
-                    <li><i class="fa-solid fa-door-open"></i> 🚪 <strong>我願意讓聖靈帶領，跨出舒適圈嗎？</strong><br>在按門鈴的恐懼中，體驗與神同工的奇妙。</li>
-                    <li><i class="fa-solid fa-mobile-screen-button"></i> 📱 <strong>善用工具：</strong><br>請分享福音節目或見證，讓媒體成為你與朋友分享的橋樑。</li>
-                </ul>
-            </div>
         </div>
-    </div>
+    </section>
 
-    <!-- Slide 12: 結語禱告 -->
-    <div class="slide-container" id="slide12">
-        <div class="title-layout" style="border: none;">
-            <i class="fa-solid fa-hands-praying" style="font-size: 80px; color: #d97706; margin-bottom: 30px;"></i>
-            <h2 style="font-size: 48px; margin-bottom: 40px;">「我們白白地得來，也要白白地捨去。」</h2>
-            <p style="font-size: 28px; max-width: 800px; line-height: 1.8;">
-                願我們都成為神家裡，那忠心、勇敢、吹響號角的守望者。<br>
-                <strong>阿門。</strong>
-            </p>
-        </div>
-    </div>
+    <!-- JS Database and Engine Code -->
+    <script>
+        // --- 5 SESSIONS DATA STORE ---
+        const tjcSermonsDatabase = {
+            1: {
+                id: 1,
+                date: "MON DEC 22",
+                title: "聖工的價值",
+                speaker: "王塞特 傳道",
+                youtube: "https://www.youtube.com/live/fybDrIzbAj4?t=54", // mock link anchor
+                verse: "歌林多前書 15:58 — 「所以我親愛的弟兄們，你們務要堅固，不可搖動，常常竭力多做主工，因為知道，你們的勞苦在主裡面不是徒然的。」",
+                verbatim: [
+                    {
+                        time: "00:00 - 15:00",
+                        subTitle: "永恆與地上的短暫價值對比",
+                        points: [
+                            "<b>地上工作的短暫限制：</b> 地上的事業與成就不管多麼輝煌，終極在肉身幾十載後化為烏有。然而，在真教會裡參與拯救靈魂的聖工，所積累的成果將存留到天國到永恆。",
+                            "<b>宣道的權特與特權：</b> 造物主並不需要凡人微小的服事，但神樂意揀選蒙召的選民，賜下聖靈看我們為忠心，讓我們能有分於救恩的榮耀大工。",
+                            "<b>聖工並無高低大小之分：</b> 有人撒種，有人澆灌，有人接待、在暗中為福音祈禱。各盡其職合一配搭，便是建立聖潔、蒙神喜悅的基督身體。"
+                        ]
+                    },
+                    {
+                        time: "15:00 - 結束",
+                        subTitle: "挪去冷漠與本分承當",
+                        points: [
+                            "<b>凡事只為主作：</b> 不要當一個作「眼見」服事的人，傳道長執有看見才特別熱心是虛虛的，要把眼光定睛在天上默默察看的真神神身上。",
+                            "<b>宣道意识的建立：</b> 教戰第一步，是建立「宣道是我的本分、非我莫屬」的強烈意識，拒絕安逸、冷漠的旁觀者心態。"
+                        ]
+                    }
+                ],
+                ppt: [
+                    { ch: "聖工的價值", text: "地上的勞苦，成果將隨肉體一同逝去。<br>但拯救霛魂的聖作，其果效將帶到天國、存留到永恆。" },
+                    { ch: "神聖的委任", text: "萬有的真神不需要凡人服事。<br>但神賜下特權，看我們為忠心，讓我們有分於天國的偉大聖工。" },
+                    { ch: "各盡其職的配搭", text: "撒種的、澆灌的、接待的、暗中代禱的……<br>在神眼中一樣寶貴。同心合意，便是興旺大溪與羅浮的福音。" },
+                    { ch: "不做討人喜悅的服事", text: "不要「眼見」服事。傳道在就拼命，傳道不在就退縮。<br>我們事奉的對象是天上的神，理當向神交帳。" },
+                    { ch: "挪開冷漠旁觀", text: "大溪羅浮福音中心是全員的禾場。不要當個抱怨事奉太累、不願付出的閒雜人。<br>人人都當有分！" }
+                ],
+                quiz: {
+                    question: "在真教會參與宣道、探訪等聖工，其「永恆價值」的根基建立在什麼原則上？",
+                    options: [
+                        "建立在傳道與負責人對我們能力的讚賞上",
+                        "建立在「地上勞苦是徒然、唯有天國的果效能隨著我們到永生」的真理上",
+                        "建立在能跟別的信徒攀比帶人成果的虛榮上"
+                    ],
+                    correct: 1,
+                    explanation: "神在《啟示錄 14:13》宣告，在主裡面息了世上勞苦的人，做工的果效會隨著他們，拯救靈魂的聖工有永恆價值。"
+                }
+            },
+            2: {
+                id: 2,
+                date: "WED DEC 24",
+                title: "宣道實務",
+                speaker: "林新賜 執事",
+                youtube: "https://www.youtube.com/live/fybDrIzbAj4?t=1920",
+                verse: "哥林多前書 3:6-7 — 「我栽種了，亞波羅澆灌了，唯有神叫他生長。可見栽種的算不得什麼，澆灌的也算不得什麼，只在那叫他生長的神。」",
+                verbatim: [
+                    {
+                        time: "32:00 - 47:00",
+                        subTitle: "「不要說話」的敲門故事與業績攀比的反思",
+                        points: [
+                            "<b>慘痛的世俗比較經驗：</b> 林執事分享早年為在同工與負責人面前交出「帶人業績」，在佈道會前催逼探訪窮困家庭。雖然在生活上送米、出資資助對方女兒，但急於交差的心態讓對方感到壓力與恐懼。",
+                            "<b>「不要說話」的閉門羹：</b> 星期六晚執事開車去載人，對方竟關燈鎖門。執事怒而敲門，卻在門縫看見孩子踮腳走，聽見爸爸小聲說『不要說話、不要說話！』。這讓他大受挫折，多年後才明白自己是在搶奪神「使人生長」的工作。",
+                            "<b>栽種與澆灌才是本分：</b> 我們只是無用的僕人，叫人生長的是神，不需要為攀比成績而發血氣，要將成果全然交託給神。"
+                        ]
+                    },
+                    {
+                        time: "47:00 - 1:15:00",
+                        subTitle: "老同工的包容順服見證，與宜蘭水蜜桃阿嬤的信心",
+                        points: [
+                            "<b>經驗豐富的隱形盲點：</b> 老同工若仗著自己有幾十年聖工經驗、不謙卑不順服新同工，會成為魔鬼分裂的破口。唯有搭配謙卑、包容和互相順服，神蹟才會顯明。",
+                            "<b>羅浮福音中心順服改點：</b> 執事順服同工姊妹提議探訪一位「平日一定不在」的剛硬人家。結果對方竟然在家，且被聖靈感動、跪地流淚。這神蹟印證了順服同工的甜美果效。",
+                            "<b>宜蘭水果阿嬤連本帶利的神蹟：</b> 70多歲長老教會阿嬤把高麗菜與水蜜桃放路邊、只留錢盒人不在。她對神極有信心。當她為孩子大學學費哭求神時，隔天錢盒裡竟出現裝有 8000 元的信封。是一位去年拿了水蜜桃卻沒零錢的客人連本帶利補還的。這信心與行為讓執事反思我們「因信稱義」更當行出好行為。"
+                        ]
+                    },
+                    {
+                        time: "1:15:00 - 結束",
+                        subTitle: "在職場與生活的無形宣道",
+                        points: [
+                            "<b>吃虧就是宣道：</b> 不要跟外邦人爭辯，在公司吃虧也甘心包容，在外面餐廳吃飯時大方謝飯禱告，學生在學校宿舍虔敬跪下禱告。好行為勝過爭辯真假。"
+                        ]
+                    }
+                ],
+                ppt: [
+                    { ch: "業績攀比的偏差", text: "不要把慕道友當成在同工面前「邀功、比成績」的工具。<br>催逼和強迫只會將靈魂逼走。" },
+                    { ch: "栽種與生長的分野", text: "我栽種，亞波羅澆灌，使人生長的唯有神。<br>不要搶奪神的工作。我們只管流淚撒種，成果交託給神。" },
+                    { ch: "資深事奉的危機", text: "資深同工最怕自恃經驗而拒絕包容。<br>缺乏『謙卑、順服與包容』的豐富經驗，極易淪為分裂的破口。" },
+                    { ch: "互相順服見神蹟", text: "順服同伴微小的提議，甚至改變原定看望行程。<br>在謙卑退讓中，神必親自開出救恩的奇妙道路。" },
+                    { ch: "好行為勝過爭論真假", text: "真理是要救人，不是與人吵架。<br>在慕道友面前為教義爭辯、在生活裡脾氣差霸佔利益，道理當場就消失了。" },
+                    { ch: "吃虧就是宣道", text: "甘心吃虧、在生活中大方且虔誠地「謝飯禱告」、學生在宿舍跪地祈禱。<br>活出好行為，引人自動歸真。" }
+                ],
+                quiz: {
+                    question: "林新賜執事在分享「不要說話」的故事中，神要教導我們最深刻的事奉心態是什麼？",
+                    options: [
+                        "探訪時一定要很大力敲門，不開門就不離開",
+                        "慕道友不來是他們的錯，我們應去別的教會跟人攀比帶人成績",
+                        "我們只是負責栽種、澆灌的無用僕人，叫人生長的是神，不可把靈魂當作個人耀眼的業績"
+                    ],
+                    correct: 2,
+                    explanation: "執事指出，當我們把「使人生長」的重擔攬在自己身上、在同工間攀比成果時，就搶奪了神的榮耀，會發血氣，失去事奉的平安。"
+                }
+            },
+            3: {
+                id: 3,
+                date: "FRI DEC 26",
+                title: "為何要傳福音",
+                speaker: "簡瑞斌 傳道",
+                youtube: "https://www.youtube.com/live/FddWV96g-oc?t=1626",
+                verse: "帖撒羅尼迦前書 5:9 — 「因為神不是預定我們受刑，乃是預定我們藉著我們主耶穌基督得救。」",
+                verbatim: [
+                    {
+                        time: "27:06 - 46:37",
+                        subTitle: "第一根據：神的旨意不願有一人沉淪",
+                        points: [
+                            "<b>神的旨意是讓人得救：</b> 神預定我們得救，不是受刑法。無論舊約新約，神一再派先知（如耶利米）去挽回子民。雖然耶利米被猶大百姓毒打、關押、打嘴巴，但神仍不放棄，因為神愛世人。",
+                            "<b>諾亞方舟的警示：</b> 諾亞在山上造方舟，被全世界人恥笑，但他堅持傳道 120 年。雖無外人相信，但他盡了自己的責任。傳是我們的責任，信不信是他與神的事。"
+                        ]
+                    },
+                    {
+                        time: "46:37 - 1:03:24",
+                        subTitle: "第二根據：差遣的憑證與守望者的血債",
+                        points: [
+                            "<b>額頭上的永生神的印記：</b> 屬靈上，我們是有「牌照」的使者。天使在《啟示錄 7 章》拿永生神的印蓋在僕人額頭上，這印記憑據就是我們心裡的聖靈！主賜聖靈，首要目的是讓我們「得著能力，作神的見證」（使徒行傳 1:8）。",
+                            "<b>守望者的號角與血債：</b> 《以西結書 33 章》若守望者看見仇敵來臨而不吹角，致使百姓死亡，神說：『我必向手望者（守望者）討他喪命的血債！』大溪信徒是地方的守望者，不開口吹角，靈魂死亡的血債將算在我們頭上。"
+                        ]
+                    },
+                    {
+                        time: "1:03:24 - 結束",
+                        subTitle: "第三根據：靈魂的價值高過賺得全世界",
+                        points: [
+                            "<b>生港教會 31 人受洗神蹟：</b> 執事與好友因商業禁忌從不談宗教。直到好友在病榻上瀕死昏迷。執事悔恨自責，衝去在好友耳邊問：『信耶穌、受洗好不好？』昏迷的阿公在靈裡清澈回答：『好！』。教會迫切禱告後，阿公死裡復活，震動龐大家族，最終 31 位子孫在一次洗禮中全部受洗歸真！"
+                        ]
+                    }
+                ],
+                ppt: [
+                    { ch: "不願一人沉淪的愛", text: "神不預定人受刑，乃預定我們藉主耶穌得救。<br>無論時代多麼硬心，神的心意仍是愛與寬容。" },
+                    { ch: "傳福音是我們的天職", text: "諾亞在山上造方舟120年，承受世界冷眼嘲笑。<br>縱然只有一家得救，他仍盡了吹角的責任。傳不傳在我們，信不信在他們。" },
+                    { ch: "我們是有執照的差遣兵", text: "聖靈就是神蓋在我們額頭上的印記（牌照）。<br>領受聖靈不是只為自己進天國，而是為了「得著為耶穌作見證的能力」！" },
+                    { ch: "守望者不吹角的血債", text: "大溪信徒就是大溪與羅浮地區的守望者。<br>若我們因膽怯而不開口（不吹角），當他人靈性滅亡時，神必向我們追討血債！" },
+                    { ch: "天國鑰匙在手", text: "真耶穌教會有完全得救的全輩真理。<br>鑰匙交給我們，如果我們不主動去開門，沒有人能進得來。" },
+                    { ch: "一個靈魂大於全世界", text: "賺得全世界，賠上生命有何益處？<br>帶領一個靈魂得救、融入大溪教會，這份功效冠冕將隨我們進入永生。" }
+                ],
+                quiz: {
+                    question: "《以西結書 33 章》中所指的「守望者的血債」，對大溪信徒的宣道使命有何警示？",
+                    options: [
+                        "只要常常奉獻金錢，不吹角開口也不會有任何責任",
+                        "若我們因為膽怯、愛面子而不向周圍親友傳揚真道，他人因無警戒而滅亡時，神會向我們討要血債",
+                        "只要傳道人在台上有吹角，信徒在台下不需要承擔任何血債"
+                    ],
+                    correct: 2,
+                    explanation: "傳道指出，每位得著聖靈蓋印的大溪信徒都是神所立的守望者。若看見末世審判將臨卻因膽怯保持沉默，便欠了靈魂的血債。"
+                }
+            },
+            4: {
+                id: 4,
+                date: "SAT DEC 27 (上午)",
+                title: "要如何傳福音",
+                speaker: "簡瑞斌 傳道",
+                youtube: "https://www.youtube.com/live/lfIrnm6M_eM?t=1260",
+                verse: "撒迦利亞書 4:6 — 「不是依靠勢力，不是依靠才能，乃是依靠神的靈方能成事。」",
+                verbatim: [
+                    {
+                        time: "21:00 - 35:10",
+                        subTitle: "第一要務：效法主耶穌的禱告 lifestyle",
+                        points: [
+                            "<b>事奉戰略在於清晨：</b> 主耶穌在安息日落後醫病趕鬼至極深夜。極度疲憊下，第二天清晨「天未亮的時候，耶穌起來到曠野禱告」。早起的嗎哪要在融化前撿，大溪信徒傳福音、承接講台招待等聖工，第一步不是規劃路線，而是清晨先跪地禱告！"
+                        ]
+                    },
+                    {
+                        time: "35:10 - 55:23",
+                        subTitle: "事奉前的禁食與事奉後獨自禱告（隱退）",
+                        points: [
+                            "<b>聖工前的四十天禁食：</b> 早期大溪開拓老前輩會效法主禁食 39 天。有大難關或要趕硬心的鬼時，非禁食禱告不能出去（馬太17:21）。",
+                            "<b>五餅二魚後的獨自上山：</b> 耶穌行了驚天神蹟後，不留戀萬人擁戴的名聲。祂立刻催門徒走，獨自上山禱告至夜晚。這是為了把果效的榮耀全然歸給神。若聖工無果效，則在禱告中接受神安撫、不致灰心（如保羅在腓立比監獄深夜唱詩禱告）。"
+                        ]
+                    },
+                    {
+                        time: "55:23 - 結束",
+                        subTitle: "第二與第三要務：開口傳揚與兩兩同工",
+                        points: [
+                            "<b>福音不能隔空、必須實體：</b> 社交媒體無論多好，最終都要「人對人、面對面」。因為網路無法施洗！必須帶到實體會堂，帶到流動活水中接受奉主名、面朝下全身的救恩浸禮。",
+                            "<b>格拉森人的家庭宣告法：</b> 污鬼被趕出後，耶穌命他：「回家，向親屬述說主怎樣憐憫你。」。陪談同工要引導新朋友口述主的恩典，引導他開口。",
+                            "<b>不單打獨鬥：</b> 主差遣門徒必是「兩個兩個出去」。探訪發單張、配合羅浮福音中心工作時，兩人一組，姐妹絕不單獨行動，能防危險，在靈裡又大有能力。"
+                        ]
+                    }
+                ],
+                ppt: [
+                    { ch: "事奉在乎禱告", text: "不是依賴才能。宣道是一場屬靈爭戰。<br>必須穿戴神的全副軍裝，倚靠禱告支取大能。" },
+                    { ch: "清晨與神的交通", text: "安息日落看病至深夜，耶穌極累，仍於天未亮到曠野晨禱。<br>事奉的能耐在於安靜的清晨，不禱告就毫無武器可言。" },
+                    { ch: "聖工前的禁食儲備", text: "攻破頑固魔鬼（如硬心慕道友），信心小是不行的。<br>『這一類的鬼，若不禱告禁食，牠就不出來。』" },
+                    { ch: "聖工後的隱退歸榮耀", text: "五餅二魚使萬人吃飽，耶穌催門徒走，獨自上山禱告。<br>得勝時，把榮耀全歸神；挫折時，在暗中尋求神安慰。" },
+                    { ch: "網絡無法隔空施洗", text: "轉發文章很好，但最終必須「人對人、面對面」。<br>赦罪的浸禮必須來到實體教會，去流動活水中接受。" },
+                    { ch: "低加波利的親屬見證", text: "耶穌命痊癒者：回家，告訴親屬主怎樣憐憫你。<br>最美的見證是向最熟悉我們的家人，勇敢口述神對我的憐憫。" },
+                    { ch: "兩個兩個，不單打獨鬥", text: "主差使徒、七十門徒均兩兩出去。<br>看望發整合包，一人訴說，一人默禱代求。姐妹更不單獨行動。" },
+                    { ch: "神學生的公車陪伴", text: "韓國女學生不會華語，用手機軟體向印尼同學傳福音。<br>公車陪伴、靈恩會懇求，同學終得聖靈！語言從不是障礙，真心才是關鍵。" },
+                    { ch: "不作給人看的事奉", text: "耶穌不留戀當地人氣，避開名聲：『我是為此出來的。』<br>不要作給傳道負責人看。我們在暗中的心志，天上大老闆看著呢！" }
+                ],
+                quiz: {
+                    question: "關於主耶穌在「五餅二魚」神蹟後隨即遣散眾人、獨自上山禱告的舉動，同工在宣道事奉中應如何效法？",
+                    options: [
+                        "在事奉獲得成果、帶領多人時，應留下來享受信徒的誇讚，不必上山",
+                        "事情做完就走，不用理會慕道友",
+                        "在聖工有成效、信徒擁戴時，立刻將果效與榮耀奉獻歸神；在遇到瓶頸時，在禱告中尋求神安慰"
+                    ],
+                    correct: 3,
+                    explanation: "傳道特別指出，主耶穌獨自上山是為了不被世界虛榮矇蔽，並將一切榮耀全然歸給天父。這教導我們不做「給人看、博掌聲」的事奉。"
+                }
+            },
+            5: {
+                id: 5,
+                date: "SAT DEC 27 (下午)",
+                title: "該如何陪談跟進",
+                speaker: "簡瑞斌 傳道",
+                youtube: "https://www.youtube.com/live/lfIrnm6M_eM?t=2040", // using timestamp for segment 5
+                verse: "彼得前書 5:2 — 「務要牧養在你們中間神的群羊，按著神旨意照管他們；不是出於勉強，乃是出於甘心；也不是因為貪財，乃是出於樂意。」",
+                verbatim: [
+                    {
+                        time: "34:00 - 48:15",
+                        subTitle: "第一金律：大會「散群」後的靈性深耕",
+                        points: [
+                            "<b>遣散眾人後的黃金介入期：</b> 五餅二魚後耶穌遣散萬人（散群），新人往往在特別靈恩佈道會的「群眾熱潮」過後信心冷卻。陪談同工必須在黃金一週內介入，陪伴新朋友沉澱靈性。",
+                            "<b>帶入一對一的晨禱靈交：</b> 陪談工作不是教條宣講，而是牽著他的手，帶領他建立「安靜與主靈交、跪地早禱」的個人習慣。幫助他在大溪會堂或家中紮根信仰。"
+                        ]
+                    },
+                    {
+                        time: "48:15 - 1:00:45",
+                        subTitle: "第二金律：引導新人整理並開口口述「大加憐憫」的見證",
+                        points: [
+                            "<b>陪談者要作「傾聽者」：</b> 不要一味指出新朋友的壞習慣。要溫柔傾聽、同理，並引導他去梳理：「這段時間，耶穌在我身上施行了哪些何等大的憐憫恩典？」",
+                            "<b>引導新朋友向「親屬開口」：</b> 鼓勵新朋友學格拉森人，向家人、老朋友大膽說出神的憐憫。當他自己開口作證，信仰便深深扎根在生活中，更能帶領家族同得福音好處。"
+                        ]
+                    },
+                    {
+                        time: "1:00:45 - 1:13:00",
+                        subTitle: "第三金律：兩兩同工與跨越語言年齡藩籬的愛心",
+                        points: [
+                            "<b>兩兩同工的牧養大軍：</b> 主差門徒皆是兩個兩個出去。看望跟進、發放單張時一定要兩兩配搭，相互代禱、彼此幫補口才。尤其是姐妹，絕不單獨出入陌生環境看望。",
+                            "<b>真心跨越藩籬：</b> 韓國神學生金喜雅不通中文與馬來文，靠著翻譯軟體與真誠陪伴，兩次陪同印尼同學搭公車聚會、求聖靈。語言、年齡和文化在跟進中從不是障礙，陪伴的真心才是聖靈動工的關鍵。",
+                            "<b>大溪羅浮福音中心的配搭：</b> 福音中心是神賞賜大溪同工的最佳牧養禾場。長輩青年人人有份，為其晨禱、兩兩看望深耕。做工效果隨身，息了勞苦，果效必隨我們到天國！"
+                        ]
+                    }
+                ],
+                ppt: [
+                    { ch: "散群後的黃金介入", text: "五餅二魚後耶穌隨即遣散眾人。佈道會大熱鬧散群後，新人心靈易落入孤單冷卻。<br>陪談同工必須在黃金三天內介入看望關懷。" },
+                    { ch: "帶入私人禱告生活", text: "跟進最關鍵的，是帶領新人從大會的「萬人熱潮」帶向一對一的「安靜晨禱」。<br>牽著他的手，教導他跪下、向神呼求聖靈。" },
+                    { ch: "遇瓶頸時的禁食守望", text: "面對被惡習纏累或信心搖動的新朋友，不可發血氣。<br>同工應兩兩同心，禁食禱告，靠神的靈攻破魔鬼堅固營壘。" },
+                    { ch: "陪談者要作「溫柔乳母」", text: "「我們在你們中間常用溫柔，如同乳母撫育孩子。」（帖前2:7）<br>不要急於糾正缺點。多同理、多傾聽，用厚實愛心建立信任。" },
+                    { ch: "引導新朋友整理見證", text: "格拉森人治好後，主命他：『回家，把主怎樣憐憫你的事告訴親屬。』<br>引導新朋友回憶並口述神如何施恩醫治他。開口見證，能使信仰深根。" },
+                    { ch: "兩兩同工牧養金律", text: "主差門徒必定是「兩個兩個出去」。<br>看望跟進不要單打獨鬥。一個說話，一個在旁默禱，事奉安全又大有能力。" },
+                    { ch: "真心與陪伴跨越障礙", text: "韓國神學生用翻譯軟體，兩次陪伴印尼同學坐公車，終使其得著聖靈。<br>年齡、語言、背景從不是阻礙，真誠的公車式陪伴才是聖靈動工關鍵。" },
+                    { ch: "事奉向天上神交帳", text: "不要「傳道在就特別熱心牧養，負責人不在就退縮」。<br>大溪教會信徒理當挪去安逸，在暗中用愛牧養，向天上的神交帳。" },
+                    { ch: "羅浮福音中心的配搭", text: "福音中心是大溪同工與神同工的絕佳禾場。<br>定時早禱、兩兩一組實體探訪，不要當個抱怨事奉太累、不願付出的閒雜人。" },
+                    { ch: "做工的果效隨身", text: "息了世上辛勞，那些因我們而受洗、求到聖靈的靈魂，將成為我們在天國不滅的榮耀冠冕！" }
+                ],
+                quiz: {
+                    question: "關於陪談跟進新生命，簡瑞斌傳道在「格拉森人」和「韓國神學生」案例中，強調了哪一項核心實務做法？",
+                    options: [
+                        "必須要求新朋友具備流利的華語口才，否則不能跟他傳",
+                        "不要急於灌輸高深神學與糾正壞習慣；要真誠傾聽同理，兩兩同工（特別是姐妹），並陪伴引導他們整理、口述神在自己身上的憐憫，鼓勵他們向家人勇敢分享",
+                        "只要把教規單張發給他，讓他自己回去研究就行，不需花時間坐公車陪伴"
+                    ],
+                    correct: 2,
+                    explanation: "跟進陪談需要如同奶媽溫柔撫育（帖前 2:7），透過兩兩一組真誠坐公車般的愛心陪伴，並引導新朋友口述神的憐憫，才最能扎根信仰。"
+                }
+            }
+        };
 
+        // --- APP STATE ---
+        let appState = {
+            activeTab: 1, // Lesson 1-5
+            activeSection: 'verbatim', // 'verbatim', 'ppt', 'interact'
+            completedLessons: [], // list of lesson IDs
+            completedQuizzes: [], // list of lesson IDs
+            userNotes: {}, // lessonId -> note string
+            commitmentSignedName: "",
+            pptSlideIndex: 0
+        };
+
+        // --- GLOBAL SYSTEM INITIALIZER ---
+        window.addEventListener('load', function() {
+            loadSystemDataFromStorage();
+            renderSidebarTabs();
+            loadActiveLessonData();
+            checkCommitmentSignState();
+            updateGlobalDashStats();
+            lucide.createIcons();
+        });
+
+        // --- TOAST NOTIFICATIONS (Safe iframe execution) ---
+        function triggerToast(message, type = 'info') {
+            const container = document.getElementById('toast-portal');
+            const toast = document.createElement('div');
+            toast.className = `flex items-center gap-2.5 px-5 py-4 rounded-2xl shadow-2xl border text-xs md:text-sm font-semibold transition-all transform translate-y-2 opacity-0 pointer-events-auto max-w-xs md:max-w-md ${
+                type === 'success' ? 'bg-emerald-950 text-emerald-300 border-emerald-500/40 shadow-emerald-500/10' : 
+                type === 'error' ? 'bg-rose-950 text-rose-300 border-rose-500/40 shadow-rose-500/10' : 
+                'bg-slate-900 text-sky-300 border-sky-500/30'
+            }`;
+            
+            let icon = 'info';
+            if (type === 'success') icon = 'check-circle-2';
+            if (type === 'error') icon = 'alert-triangle';
+
+            toast.innerHTML = `
+                <i data-lucide="${icon}" class="w-5 h-5 flex-shrink-0"></i>
+                <span class="flex-1">${message}</span>
+            `;
+            
+            container.appendChild(toast);
+            lucide.createIcons();
+            
+            setTimeout(() => {
+                toast.classList.remove('translate-y-2', 'opacity-0');
+            }, 10);
+
+            // Auto dismiss 3.5s
+            setTimeout(() => {
+                toast.classList.add('translate-y-2', 'opacity-0');
+                setTimeout(() => toast.remove(), 300);
+            }, 3500);
+        }
+
+        // --- LOCAL STORAGE PERSISTENCE ---
+        const tjcLocalStorageKey = 'tjc_daxi_mission_guide_v2';
+
+        function saveSystemDataToStorage() {
+            localStorage.setItem(tjcLocalStorageKey, JSON.stringify({
+                completedLessons: appState.completedLessons,
+                completedQuizzes: appState.completedQuizzes,
+                userNotes: appState.userNotes,
+                commitmentSignedName: appState.commitmentSignedName
+            }));
+            updateGlobalDashStats();
+        }
+
+        function loadSystemDataFromStorage() {
+            const raw = localStorage.getItem(tjcLocalStorageKey);
+            if (raw) {
+                try {
+                    const parsed = JSON.parse(raw);
+                    appState.completedLessons = parsed.completedLessons || [];
+                    appState.completedQuizzes = parsed.completedQuizzes || [];
+                    appState.userNotes = parsed.userNotes || {};
+                    appState.commitmentSignedName = parsed.commitmentSignedName || "";
+                } catch(e) {
+                    console.error("解析大溪宣道儲存數據出錯", e);
+                }
+            }
+        }
+
+        function triggerResetSystem() {
+            if (confirm("大溪真耶穌教會同工，您確定要清空本地所有學習心得與測驗進度，重新開始研讀嗎？")) {
+                localStorage.removeItem(tjcLocalStorageKey);
+                appState.completedLessons = [];
+                appState.completedQuizzes = [];
+                appState.userNotes = {};
+                appState.commitmentSignedName = "";
+                appState.activeTab = 1;
+                appState.activeSection = 'verbatim';
+                appState.pptSlideIndex = 0;
+
+                renderSidebarTabs();
+                loadActiveLessonData();
+                checkCommitmentSignState();
+                updateGlobalDashStats();
+                triggerToast("本地所有研習紀錄已重設清空！", "info");
+            }
+        }
+
+        // --- GLOBAL DASH STATS ---
+        function updateGlobalDashStats() {
+            const completeCount = appState.completedLessons.length;
+            const quizCount = appState.completedQuizzes.length;
+            
+            document.getElementById('stat-completed').innerText = `${completeCount} / 5`;
+            document.getElementById('stat-quizzes').innerText = `${quizCount} / 5`;
+
+            // Percent完訓
+            const pct = Math.round((completeCount / 5) * 100);
+            document.getElementById('sidebar-progress-label').innerText = `${pct}% 完訓`;
+            document.getElementById('master-progress-fill').style.width = `${pct}%`;
+
+            // Commitment badge
+            const commitBadge = document.getElementById('stat-commit');
+            if (appState.commitmentSignedName) {
+                commitBadge.innerText = "已簽署";
+                commitBadge.className = "text-xl md:text-2xl font-black text-amber-500 animate-pulse";
+            } else {
+                commitBadge.innerText = "尚未";
+                commitBadge.className = "text-xl md:text-2xl font-black text-slate-500";
+            }
+
+            // LEVEL
+            const levelLabel = document.getElementById('stat-level');
+            let level = "初信徒";
+            if (completeCount === 5 && quizCount === 5) level = "天國精兵";
+            else if (completeCount >= 3) level = "宣道先鋒";
+            else if (completeCount >= 1) level = "福音使者";
+            levelLabel.innerText = level;
+        }
+
+        // --- RENDER SIDEBAR TABS ---
+        function renderSidebarTabs() {
+            const container = document.getElementById('lesson-tab-list');
+            container.innerHTML = '';
+
+            for (let i = 1; i <= 5; i++) {
+                const lesson = tjcSermonsDatabase[i];
+                const isActive = appState.activeTab === i;
+                const isCompleted = appState.completedLessons.includes(i);
+
+                const btn = document.createElement('button');
+                btn.className = `w-full text-left p-3.5 rounded-2xl border transition-all duration-200 flex items-center justify-between group ${
+                    isActive 
+                        ? 'bg-gradient-to-r from-sky-950/80 to-cyan-900 border-sky-500/40 shadow-lg shadow-sky-500/10' 
+                        : 'bg-slate-950/60 hover:bg-slate-900 border-slate-800'
+                }`;
+                btn.onclick = () => selectLessonTab(i);
+
+                btn.innerHTML = `
+                    <div class="flex items-center space-x-3 truncate">
+                        <div class="w-8 h-8 rounded-xl flex items-center justify-center font-black text-xs flex-shrink-0 ${
+                            isActive ? 'bg-sky-500 text-white' : 'bg-slate-800 text-slate-400 group-hover:bg-slate-700'
+                        }">
+                            0${i}
+                        </div>
+                        <div class="truncate text-left">
+                            <span class="text-[9px] text-slate-500 font-bold block tracking-wider">${lesson.date}</span>
+                            <span class="text-xs md:text-sm font-extrabold block truncate ${isActive ? 'text-sky-300' : 'text-slate-300 group-hover:text-sky-400'}">${lesson.title}</span>
+                        </div>
+                    </div>
+                    <div class="flex items-center space-x-1.5 flex-shrink-0">
+                        <span class="w-5 h-5 rounded-full flex items-center justify-center border ${
+                            isCompleted ? 'bg-emerald-500/10 text-emerald-400 border-emerald-500/40' : 'text-slate-700 border-slate-800'
+                        }">
+                            <i data-lucide="${isCompleted ? 'check-check' : 'circle'}" class="w-3.5 h-3.5"></i>
+                        </span>
+                    </div>
+                `;
+                container.appendChild(btn);
+            }
+            lucide.createIcons();
+        }
+
+        function selectLessonTab(id) {
+            appState.activeTab = id;
+            appState.pptSlideIndex = 0; // reset slide
+            renderSidebarTabs();
+            loadActiveLessonData();
+        }
+
+        // --- SUB SECTION RIBBON SWITCH ---
+        function setLessonSection(sec) {
+            appState.activeSection = sec;
+            
+            // update Ribbon UI styles
+            const ribs = ['transcript', 'ppt', 'workbook'];
+            ribs.forEach(r => {
+                const btn = document.getElementById(`tab-btn-${r}`);
+                if (r === tabIdMapper(tabIdFromSection(sec))) { // helper map below
+                    // handled by switchTab
+                }
+            });
+            switchTab(sec);
+        }
+
+        function switchTab(tabId) {
+            // Helper for mapping tabs to content
+            const tabs = ['transcript', 'ppt', 'workbook'];
+            tabs.forEach(t => {
+                document.getElementById(`tab-content-${t}`).classList.add('hidden');
+                document.getElementById(`tab-btn-${t}`).className = "flex-1 lg:flex-none px-4 py-2.5 rounded-xl text-xs md:text-sm font-semibold transition-all text-slate-400 hover:text-slate-200";
+            });
+
+            document.getElementById(`tab-content-${tabId}`).classList.remove('hidden');
+            const activeBtn = document.getElementById(`tab-btn-${tabId}`);
+            
+            if (tabId === 'transcript') {
+                activeBtn.className = "flex-1 lg:flex-none px-4 py-2.5 rounded-xl text-xs md:text-sm font-semibold transition-all bg-sky-600 text-white shadow-md";
+            } else if (tabId === 'ppt') {
+                activeBtn.className = "flex-1 lg:flex-none px-4 py-2.5 rounded-xl text-xs md:text-sm font-semibold transition-all bg-blue-600 text-white shadow-md";
+                renderCurrentSlidePPT();
+            } else {
+                activeBtn.className = "flex-1 lg:flex-none px-4 py-2.5 rounded-xl text-xs md:text-sm font-semibold transition-all bg-amber-600 text-white shadow-md";
+                loadActionWorkbookData();
+            }
+        }
+
+        function tabIdMapper(sec) {
+            return sec; // already matching
+        }
+
+        function tabIdFromSection(sec) {
+            return sec;
+        }
+
+        // --- LOAD ACTIVE LESSON DATA ---
+        function loadActiveLessonData() {
+            const lesson = tjcSermonsDatabase[appState.activeTab];
+            if (!lesson) return;
+
+            // Sync Lesson completetion button
+            const isCompleted = appState.completedLessons.includes(lesson.id);
+            const compBtn = document.getElementById('btn-complete-lesson');
+            
+            // Build the dynamic structure for Tab 1 (Transcript) & Tab 2 (PPT) & Tab 3 (Workbook)
+            renderTranscriptChapters();
+            
+            // If Ribbon PPT is active, render current slide
+            renderCurrentSlidePPT();
+
+            // Synced notes value
+            const currentNote = appState.userNotes[appState.activeTab] || "";
+            const textNote = document.getElementById('lesson-textarea-note');
+            if (textNote) textNote.value = currentNote;
+        }
+
+        // --- RENDER DETAILED TRANSCRIPTS ---
+        function renderTranscriptChapters() {
+            const lesson = tjcSermonsDatabase[appState.activeTab];
+            const container = document.getElementById('transcript-chapters');
+            const anchors = document.getElementById('transcript-anchors');
+            container.innerHTML = '';
+            anchors.innerHTML = '';
+
+            // Update Page Header first
+            document.getElementById('sheet-meta-badge').innerText = `LESSON 0${lesson.id} · ${lesson.date}`;
+            document.getElementById('sheet-title').innerText = lesson.title;
+            document.getElementById('sheet-speaker').innerText = `講員：${lesson.speaker}`;
+
+            // Completion Button Sync
+            const isCompleted = appState.completedLessons.includes(lesson.id);
+            const compBtn = document.getElementById('btn-complete-complete-box');
+            if (compBtn) {
+                if (isCompleted) {
+                    compBtn.className = "px-4 py-2.5 rounded-xl text-xs font-bold transition-all border bg-emerald-500/10 text-emerald-400 border-emerald-500/30 flex items-center justify-center gap-1.5";
+                    compBtn.innerHTML = `<i data-lucide="check-check" class="w-4 h-4"></i> <span>已標記此課堂完訓</span>`;
+                } else {
+                    compBtn.className = "px-4 py-2.5 rounded-xl text-xs font-bold transition-all border bg-sky-600 hover:bg-sky-500 text-white border-sky-600 flex items-center justify-center gap-1.5 shadow-md";
+                    compBtn.innerHTML = `<i data-lucide="check-circle" class="w-4 h-4"></i> <span>標記為已研讀</span>`;
+                }
+            }
+
+            // Left Anchors & Right Blocks loop
+            lesson.verbatim.forEach((sec, idx) => {
+                const uniqueId = `lesson-${lesson.id}-sec-${idx}`;
+
+                // Left Anchor links
+                const anchor = document.createElement('a');
+                anchor.href = `#${uniqueId}`;
+                anchor.className = "block px-3 py-2 text-xs rounded-xl border border-transparent hover:bg-slate-900 text-slate-400 hover:text-sky-300 transition-all flex items-center justify-between group";
+                anchor.innerHTML = `
+                    <div class="flex items-center space-x-2 truncate">
+                        <span class="w-1.5 h-1.5 bg-slate-700 group-hover:bg-sky-400 rounded-full transition-colors flex-shrink-0"></span>
+                        <span class="font-bold truncate max-w-[150px] text-slate-300 group-hover:text-sky-300">${sec.subTitle}</span>
+                    </div>
+                    <span class="text-[9px] text-slate-600 font-mono">${sec.time}</span>
+                `;
+                anchors.appendChild(anchor);
+
+                // Right Content Cards
+                const card = document.createElement('div');
+                card.id = uniqueId;
+                card.className = "bg-slate-900/60 border border-slate-800/80 rounded-2xl p-5 space-y-4 shadow-md scroll-mt-24";
+                
+                card.innerHTML = `
+                    <div class="flex items-center justify-between border-b border-slate-800/80 pb-3">
+                        <h4 class="text-sm font-bold text-slate-200 flex items-center gap-1.5">
+                            <span class="w-2 h-2 rounded-full bg-sky-400"></span>
+                            ${sec.subTitle}
+                        </h4>
+                        <span class="text-[10px] text-slate-500 font-mono font-bold">${sec.time}</span>
+                    </div>
+
+                    <div class="space-y-3">
+                        <h5 class="text-[10px] font-black text-slate-400 uppercase tracking-widest flex items-center gap-1">
+                            <i data-lucide="sparkle" class="w-3.5 h-3.5 text-sky-400 animate-pulse"></i> 屬靈教戰重點精華
+                        </h5>
+                        <ul class="space-y-2.5 text-xs md:text-sm pl-1">
+                            ${sec.points.map(pt => `
+                                <li class="flex items-start gap-2.5">
+                                    <span class="text-sky-400 font-bold mt-0.5">▪</span>
+                                    <span class="leading-relaxed text-slate-300">${pt}</span>
+                                </li>
+                            `).join('')}
+                        </ul>
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+
+            // Set up Verbatim frame UI
+            const activeContainer = document.getElementById('active-sub-section-container');
+            activeContainer.innerHTML = '';
+            
+            // Build layout: Left anchors, Right content
+            const frameDiv = document.createElement('div');
+            frameDiv.className = "grid grid-cols-1 md:grid-cols-12 gap-6 items-start";
+            
+            const leftSidebar = document.createElement('div');
+            leftSidebar.className = "md:col-span-4 bg-slate-950/40 border border-slate-800 rounded-2xl p-3.5 space-y-2.5";
+            leftSidebar.innerHTML = `
+                <div class="text-[10px] font-black text-slate-500 uppercase tracking-widest border-b border-slate-800 pb-2 flex justify-between items-center">
+                    <span>影片時間戳</span>
+                    <a href="${lesson.youtube}" target="_blank" class="text-red-500 hover:text-red-400 flex items-center gap-0.5">
+                        <i data-lucide="youtube" class="w-3 h-3"></i> 影片對照
+                    </a>
+                </div>
+                <div class="space-y-1" id="dynamic-anchors-box"></div>
+            `;
+            
+            const rightContents = document.createElement('div');
+            rightContents.className = "md:col-span-8 space-y-5";
+            rightContents.id = "dynamic-contents-box";
+
+            frameDiv.appendChild(leftSidebar);
+            frameDiv.appendChild(rightContents);
+
+            // Append Scripture Banner at top of verbatim
+            const scriptureDiv = document.createElement('div');
+            scriptureDiv.className = "bg-slate-950 border border-slate-800 rounded-2xl p-4 flex gap-3 mb-4";
+            scriptureDiv.innerHTML = `
+                <div class="w-9 h-9 bg-amber-500/10 border border-amber-500/20 text-amber-400 rounded-xl flex items-center justify-center flex-shrink-0">
+                    <i data-lucide="book-open" class="w-4 h-4"></i>
+                </div>
+                <div>
+                    <p class="text-[10px] text-amber-500 font-black uppercase tracking-wider">核心聖意經節</p>
+                    <p class="text-xs md:text-sm text-slate-200 italic font-serif mt-1 leading-relaxed">${lesson.verse}</p>
+                </div>
+            `;
+            activeContainer.appendChild(scriptureDiv);
+            activeContainer.appendChild(frameDiv);
+
+            // Populate anchors and cards
+            document.getElementById('dynamic-anchors-box').appendChild(anchors);
+            document.getElementById('dynamic-contents-box').appendChild(container);
+            
+            lucide.createIcons();
+        }
+
+        // --- COMPLETE LESSON BUTTON CLICK ---
+        function toggleLessonCompleteState() {
+            const id = appState.activeTab;
+            const index = appState.completedLessons.indexOf(id);
+            if (index > -1) {
+                appState.completedLessons.splice(index, 1);
+                triggerToast(`已取消本課研習已讀標記！`, "info");
+            } else {
+                appState.completedLessons.push(id);
+                triggerToast(`太棒了！已將課堂 0${id}《${tjcSermonsDatabase[id].title}》標記為完訓！`, "success");
+            }
+            saveSystemDataToStorage();
+            renderSidebarTabs();
+            loadActiveLessonData();
+        }
+
+        // --- PPT PRESENTATION RENDERER ---
+        function renderCurrentSlidePPT() {
+            if (appState.activeSection !== 'ppt') return;
+
+            const lesson = tjcSermonsDatabase[appState.activeTab];
+            const slide = lesson.ppt[appState.pptSlideIndex];
+            const container = document.getElementById('active-sub-section-container');
+            container.innerHTML = '';
+
+            // Render PPT Canvas with elegant black projection card style
+            const pptDiv = document.createElement('div');
+            pptDiv.className = "space-y-6";
+            pptDiv.innerHTML = `
+                <div id="ppt-slide-card" class="bg-gradient-to-br from-slate-950 via-sky-950/20 to-slate-950 border-2 border-slate-800 rounded-3xl p-6 md:p-12 min-h-[350px] flex flex-col justify-between shadow-2xl relative overflow-hidden transition-all duration-300">
+                    <!-- Glow background -->
+                    <div class="absolute -right-24 -bottom-24 w-72 h-72 bg-sky-500/5 rounded-full blur-3xl pointer-events-none"></div>
+
+                    <!-- Slide header -->
+                    <div class="flex items-center justify-between border-b border-sky-500/10 pb-3 text-xs text-sky-400 font-extrabold uppercase tracking-widest select-none">
+                        <span>大溪真耶穌教會 · 宣道裝備</span>
+                        <span>Slide 0${appState.pptSlideIndex + 1} / 0${lesson.ppt.length}</span>
+                    </div>
+
+                    <!-- Slide core content -->
+                    <div class="flex-1 py-8 flex flex-col justify-center items-center text-center space-y-4 relative z-10 page-fade" id="slide-text-box">
+                        <span class="px-2.5 py-0.5 rounded bg-sky-500/10 border border-sky-500/20 text-sky-300 text-[10px] font-black uppercase tracking-widest">${slide.ch}</span>
+                        <h2 class="text-lg md:text-2xl font-black text-slate-100 max-w-xl mx-auto leading-relaxed tracking-wide">
+                            ${slide.text}
+                        </h2>
+                    </div>
+
+                    <!-- Slide footer controls -->
+                    <div class="flex items-center justify-between border-t border-slate-800 pt-3 text-xs text-slate-500">
+                        <p class="font-bold">主講：${lesson.speaker}</p>
+                        <div class="flex items-center gap-1.5">
+                            <button onclick="prevPPTSlide()" class="p-1.5 hover:bg-slate-900 rounded border border-slate-800 text-slate-400 hover:text-white transition-colors"><i data-lucide="chevron-left" class="w-4 h-4"></i></button>
+                            <button onclick="nextPPTSlide()" class="p-1.5 hover:bg-slate-900 rounded border border-slate-800 text-slate-400 hover:text-white transition-colors"><i data-lucide="chevron-right" class="w-4 h-4"></i></button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="text-center text-xs text-slate-500 font-semibold select-none flex items-center justify-center gap-1">
+                    <i data-lucide="keyboard" class="w-3.5 h-3.5"></i> 支援按鍵盤左右鍵 ◀ ▶ 翻頁 (雙擊簡報視窗可全螢幕播放)
+                </div>
+            `;
+
+            container.appendChild(pptDiv);
+            lucide.createIcons();
+
+            // Set up Double Click trigger for fullscreen
+            document.getElementById('ppt-slide-card').addEventListener('dblclick', function() {
+                toggleProjectionFullscreen();
+            });
+        }
+
+        function prevPPTSlide() {
+            const lesson = tjcSermonsDatabase[appState.activeTab];
+            if (appState.pptSlideIndex > 0) {
+                appState.pptSlideIndex--;
+            } else {
+                appState.pptSlideIndex = lesson.ppt.length - 1;
+            }
+            renderCurrentSlidePPT();
+        }
+
+        function nextPPTSlide() {
+            const lesson = tjcSermonsDatabase[appState.activeTab];
+            if (appState.pptSlideIndex < lesson.ppt.length - 1) {
+                appState.pptSlideIndex++;
+            } else {
+                appState.pptSlideIndex = 0;
+            }
+            renderCurrentSlidePPT();
+        }
+
+        function toggleProjectionFullscreen() {
+            const card = document.getElementById('ppt-slide-card');
+            if (card.classList.contains('fixed')) {
+                card.className = "bg-gradient-to-br from-slate-950 via-sky-950/20 to-slate-950 border-2 border-slate-800 rounded-3xl p-6 md:p-12 min-h-[350px] flex flex-col justify-between shadow-2xl relative overflow-hidden transition-all duration-300";
+                document.body.style.overflow = "auto";
+                triggerToast("已退出投影播放模式", "info");
+            } else {
+                card.className = "fixed inset-0 z-50 bg-slate-950 p-8 md:p-16 flex flex-col justify-between shadow-2xl overflow-hidden transition-all duration-300";
+                document.body.style.overflow = "hidden";
+                triggerToast("已開啟大螢幕投影模式 (雙擊或按 ESC 鍵可退出)", "success");
+            }
+        }
+
+        // --- INTERACT WORKBOOK & QUESTIONS RENDERER ---
+        function loadActionWorkbookData() {
+            if (appState.activeSection !== 'interact') return;
+
+            const lesson = tjcSermonsDatabase[appState.activeTab];
+            const container = document.getElementById('active-sub-section-container');
+            container.innerHTML = '';
+
+            const isQuizCompleted = appState.completedQuizzes.includes(lesson.id);
+            const savedNote = appState.userNotes[lesson.id] || "";
+
+            const workDiv = document.createElement('div');
+            workDiv.className = "space-y-6";
+            workDiv.innerHTML = `
+                <!-- 1. Interactive Question Board -->
+                <div class="bg-slate-950 border border-slate-800 rounded-2xl p-5 space-y-4">
+                    <h3 class="text-sm font-bold text-sky-400 uppercase tracking-widest flex items-center gap-1.5 border-b border-slate-800 pb-2">
+                        <i data-lucide="help-circle" class="w-4 h-4"></i> 課堂簡易觀念問答
+                    </h3>
+                    <div id="quiz-question-box" class="space-y-3">
+                        <!-- Filled dynamically -->
+                    </div>
+                </div>
+
+                <!-- 2. Personal Lesson Reflection Handnote -->
+                <div class="bg-slate-950 border border-slate-800 rounded-2xl p-5 space-y-4">
+                    <h3 class="text-sm font-bold text-sky-400 uppercase tracking-widest flex items-center gap-1.5 border-b border-slate-800 pb-2">
+                        <i data-lucide="pencil" class="w-4 h-4"></i> 我的屬靈研習心得與實踐目標
+                    </h3>
+                    <textarea id="notebook-user-note" oninput="autoSaveNote(this.value)" placeholder="讀完本課，聖靈帶給您哪些觸動、反省？您立志如何在生活中「勇敢走出去、向人訴說、帶人進真教會」？（內容會自動保存在本地）" class="w-full h-32 p-3.5 bg-slate-900 border border-slate-800 rounded-xl focus:outline-none focus:ring-2 focus:ring-sky-500 text-slate-100 placeholder-slate-500 text-sm md:text-base leading-relaxed resize-none"></textarea>
+                    <div class="flex items-center justify-between text-[10px] text-slate-500">
+                        <span>最後更新：自動儲存於當前瀏覽器</span>
+                        <span id="autosave-tick" class="text-emerald-500 font-bold flex items-center gap-0.5"><i data-lucide="cloud-lightning" class="w-3 h-3"></i> 已安全保存</span>
+                    </div>
+                </div>
+            `;
+
+            container.appendChild(workDiv);
+            renderQuizBlock(lesson, isQuizCompleted);
+            lucide.createIcons();
+        }
+
+        function renderQuizBlock(lesson, isCompleted) {
+            const box = document.getElementById('quiz-question-box');
+            box.innerHTML = `
+                <p class="text-xs md:text-sm font-bold text-slate-200 leading-relaxed">${lesson.quiz.question}</p>
+                <div class="space-y-2 pt-1" id="quiz-options-list"></div>
+            `;
+
+            const optsList = document.getElementById('quiz-options-list');
+            lesson.quiz.options.forEach((opt, idx) => {
+                const optBtn = document.createElement('button');
+                optBtn.className = `w-full text-left p-3.5 rounded-xl border text-xs md:text-sm flex items-center justify-between gap-3 transition-colors ${
+                    isCompleted 
+                        ? (idx + 1 === lesson.quiz.correct ? 'bg-emerald-950/60 border-emerald-500/40 text-emerald-300 font-bold' : 'bg-slate-950 border-slate-900 text-slate-500 cursor-not-allowed')
+                        : 'bg-slate-900/60 border-slate-800 text-slate-300 hover:bg-slate-800/80 hover:border-slate-700'
+                }`;
+                optBtn.disabled = isCompleted;
+                optBtn.onclick = () => checkSelectedQuizAnswer(idx + 1);
+
+                optBtn.innerHTML = `
+                    <span>${opt}</span>
+                    <i data-lucide="${isCompleted && idx + 1 === lesson.quiz.correct ? 'check-circle' : 'circle'}" class="w-4 h-4 flex-shrink-0"></i>
+                `;
+                optsList.appendChild(optBtn);
+            });
+
+            if (isCompleted) {
+                const expl = document.createElement('div');
+                expl.className = "mt-4 p-4 rounded-xl bg-sky-950/20 border border-sky-500/15 text-xs md:text-sm leading-relaxed text-sky-300 space-y-1.5";
+                expl.innerHTML = `
+                    <div class="font-bold flex items-center gap-1 text-sky-400">
+                        <i data-lucide="info" class="w-4 h-4"></i> 解答正確！大溪宣道兵法提示：
+                    </div>
+                    <p>${lesson.quiz.explanation}</p>
+                `;
+                box.appendChild(expl);
+                lucide.createIcons();
+            }
+        }
+
+        function checkSelectedQuizAnswer(ans) {
+            const lesson = tjcSermonsDatabase[appState.activeTab];
+            if (ans === lesson.quiz.correct) {
+                appState.completedQuizzes.push(lesson.id);
+                saveSystemDataToStorage();
+                triggerToast("恭喜答對！您的宣道觀念極其純正紮實！", "success");
+                loadActionWorkbookData();
+                
+                // If lesson is not marked as complete, do it automatically to help progression
+                if (!appState.completedLessons.includes(lesson.id)) {
+                    appState.completedLessons.push(lesson.id);
+                    saveSystemDataToStorage();
+                    renderSidebarTabs();
+                    renderTranscriptChapters();
+                }
+            } else {
+                triggerToast("答錯了！請重新省思、再次作答。", "error");
+            }
+        }
+
+        // --- AUTOSAVE NOTES ---
+        let debounceTimer;
+        function autoSaveNote(text) {
+            const indicator = document.getElementById('autosave-tick');
+            if (indicator) {
+                indicator.innerHTML = `<i data-lucide="loader" class="w-3 h-3 animate-spin"></i> 正在儲存...`;
+                lucide.createIcons();
+            }
+
+            clearTimeout(debounceTimer);
+            debounceTimer = setTimeout(() => {
+                appState.userNotes[appState.activeTab] = text;
+                saveSystemDataToStorage();
+                if (indicator) {
+                    indicator.innerHTML = `<i data-lucide="cloud-lightning" class="w-3 h-3 text-emerald-400 animate-pulse"></i> 已安全保存`;
+                    lucide.createIcons();
+                }
+            }, 600);
+        }
+
+        // --- COMMITMENT DECLARATION SIGN ---
+        function triggerCommitmentSign() {
+            const input = document.getElementById('signer-name-input');
+            const name = input.value.trim();
+
+            if (!name) {
+                triggerToast("大溪信徒同工，請先輸入您的名字！", "error");
+                return;
+            }
+
+            appState.commitmentSignedName = name;
+            saveSystemDataToStorage();
+            checkCommitmentSignState();
+            triggerToast(`感謝神！${name} 同工，您已成功完成事奉的準備！`, "success");
+        }
+
+        function triggerResetCommitment() {
+            appState.commitmentSignedName = "";
+            saveSystemDataToStorage();
+            checkCommitmentSignState();
+            triggerToast("已解開名字以供重新修改簽署", "info");
+        }
+
+        function checkCommitmentSignState() {
+            const form = document.getElementById('commitment-input-form');
+            const certified = document.getElementById('commitment-badge-certified');
+            const signerDisp = document.getElementById('certified-signer-name');
+
+            if (appState.commitmentSignedName) {
+                form.classList.add('hidden');
+                certified.classList.remove('hidden');
+                signerDisp.innerText = appState.commitmentSignedName;
+            } else {
+                form.classList.remove('hidden');
+                certified.classList.add('hidden');
+            }
+        }
+
+        // --- EXPORT PERSONAL REPORT TO TXT ---
+        function triggerExportActionReport() {
+            if (!appState.commitmentSignedName) return;
+
+            let report = `========================================================\n`;
+            report += `  真耶穌教會大溪教會 - 宣道週個人學習心得與行動計畫報告  \n`;
+            report += `========================================================\n\n`;
+            report += `立志成為福音的使者：${appState.commitmentSignedName}\n`;
+            report += `完訓課程進度：${appState.completedLessons.length} / 5 堂課\n`;
+            report += `屬靈裝備階級：${document.getElementById('stat-level').innerText}\n\n`;
+            report += `------------------ 個人手札學習心得 ------------------\n\n`;
+
+            for (let i = 1; i <= 5; i++) {
+                const lesson = tjcSermonsDatabase[i];
+                const note = appState.userNotes[i] || "（本課尚未留下心得）";
+                report += `【課程 0${i}】${lesson.title}\n`;
+                report += `講員：${lesson.speaker}\n`;
+                report += `個人領受與誓立目標：\n${note}\n`;
+                report += `------------------------------------------------------\n\n`;
+            }
+
+            report += `誓願心志：\n`;
+            report += `「我已立定心志，挪去膽怯安逸，勇敢走出去、向人訴說、帶人進真教會受洗歸真！」\n\n`;
+            report += `大溪真耶穌教會宣道股 · 守望關懷存檔\n`;
+
+            // Download file browser trigger (document.execCommand alternative for strict iframe)
+            const blob = new Blob([report], { type: "text/plain;charset=utf-8" });
+            const link = document.createElement("a");
+            link.href = URL.createObjectURL(blob);
+            link.download = `大溪真耶穌教會_${appState.commitmentSignedName}_宣道週行動手札.txt`;
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            triggerToast("心得實踐報告已順利導出下載！可轉發與負責人交流分享。", "success");
+        }
+
+        // --- KEYBOARD LISTENER FOR PPT SLIDES ---
+        document.addEventListener('keydown', function(event) {
+            if (appState.activeSection !== 'ppt') return;
+
+            if (event.key === 'ArrowRight' || event.key === ' ') {
+                event.preventDefault();
+                nextPPTSlide();
+            } else if (event.key === 'ArrowLeft') {
+                event.preventDefault();
+                prevPPTSlide();
+            } else if (event.key === 'Escape') {
+                const card = document.getElementById('ppt-slide-card');
+                if (card && card.classList.contains('fixed')) {
+                    toggleProjectionFullscreen();
+                }
+            }
+        });
+    </script>
 </body>
 </html>
 
+```
