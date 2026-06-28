@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>大溪真耶穌教會 - 聖工的價值</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+        tailwind.config = { theme: { extend: { colors: { slate: { 950: '#020617' } } } } }
+    </script>
+</head>
+<body class="bg-slate-950 text-slate-100 min-h-screen p-4 md:p-8">
+
+    <!-- Container Header -->
+    <div class="max-w-4xl mx-auto bg-slate-900 border border-slate-800 rounded-3xl p-6 md:p-8 space-y-6">
+        <div class="flex items-center justify-between border-b border-slate-800 pb-4">
+            <div>
+                <span class="text-xs text-sky-400 font-bold font-mono tracking-widest bg-sky-500/10 px-2.5 py-1 rounded">LESSON 01 · 6/22</span>
+                <h1 class="text-2xl md:text-3xl font-black text-slate-100 mt-1">第一節：聖工的價值</h1>
+                <p class="text-xs text-slate-400 mt-0.5">主講：王塞特 傳道</p>
+            </div>
+            <a href="index.html" class="px-4 py-2 border border-slate-800 hover:border-slate-700 rounded-xl text-xs font-bold text-slate-300 transition-colors flex items-center gap-1">
+                <i data-lucide="arrow-left" class="w-4 h-4"></i> 返回主首頁
+            </a>
+        </div>
+
+        <!-- 3 Tab Section Nav -->
+        <div class="flex bg-slate-950 p-1.5 rounded-2xl text-xs md:text-sm font-bold border border-slate-800">
+            <button onclick="switchLessonTab('verbatim')" id="tab-verbatim" class="flex-1 py-3 text-center rounded-xl bg-sky-600 text-white shadow">1. 重點逐字稿</button>
+            <button onclick="switchLessonTab('ppt')" id="tab-ppt" class="flex-1 py-3 text-center rounded-xl text-slate-400">2. 精美顯眼 PPT</button>
+            <button onclick="switchLessonTab('quiz')" id="tab-quiz" class="flex-1 py-3 text-center rounded-xl text-slate-400">3. 隨堂測驗</button>
+        </div>
+
+        <!-- content 1: Verbatim -->
+        <div id="content-verbatim" class="space-y-6">
+            <div class="bg-slate-950 p-4 border border-slate-800 rounded-2xl flex gap-3">
+                <div class="p-2 bg-amber-500/10 text-amber-400 rounded-xl flex items-center"><i data-lucide="book-open" class="w-5 h-5"></i></div>
+                <p class="text-xs md:text-sm text-slate-200 italic font-serif leading-relaxed">
+                    「所以我親愛的弟兄們，你們務要堅固，不可搖動，常常竭力多做主工，因為知道，你們的勞苦在主裡面不是徒然的。」—— 歌林多前書 15:58
+                </p>
+            </div>
+            <div class="space-y-4 text-xs md:text-sm leading-relaxed text-slate-300">
+                <h3 class="text-base font-bold text-slate-100 flex items-center gap-2"><span class="w-1.5 h-1.5 bg-sky-400 rounded-full"></span> 永恆與地上的價值對比</h3>
+                <p>地上的事業與成就再輝煌，終極肉身幾十載後化為烏有。然而在真教會裡參與拯救霛魂的聖工，所累積的成果將存留到天國、存留到永恆。神並不缺乏凡人微小的服事，但祂樂意揀選蒙召的選民，賜下聖靈並看我們為忠心，讓我們有分於天國榮耀。聖工並無高低大小之分，撒種、澆灌、暗中祈禱、接待配搭，都是建造合神心意的基督身體。</p>
+            </div>
+        </div>
+
+        <!-- content 2: PPT -->
+        <div id="content-ppt" class="hidden space-y-4">
+            <div id="ppt-card" class="bg-gradient-to-br from-slate-950 to-sky-950/20 border-2 border-slate-800 rounded-3xl p-8 min-h-[300px] flex flex-col justify-between">
+                <div class="text-[10px] text-sky-400 font-bold uppercase tracking-widest border-b border-slate-800 pb-2 flex justify-between select-none">
+                    <span>大溪宣道 PPT 投影</span>
+                    <span id="slide-num">Slide 1 / 5</span>
+                </div>
+                <div class="py-8 text-center flex flex-col justify-center items-center text-slate-100 font-black text-sm md:text-xl max-w-xl mx-auto leading-relaxed" id="slide-text">
+                    地上的勞苦，成果將隨肉體一同逝去。<br>但拯救霛魂的聖作，其果效將帶到天國、存留到永恆。
+                </div>
+                <div class="flex justify-between items-center text-xs text-slate-500 pt-2 border-t border-slate-800">
+                    <span>雙擊切換全螢幕投影</span>
+                    <div class="flex gap-2">
+                        <button onclick="prevSlide()" class="p-1 border border-slate-800 rounded hover:bg-slate-900"><i data-lucide="chevron-left" class="w-4 h-4"></i></button>
+                        <button onclick="nextSlide()" class="p-1 border border-slate-800 rounded hover:bg-slate-900"><i data-lucide="chevron-right" class="w-4 h-4"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- content 3: Quiz -->
+        <div id="content-quiz" class="hidden space-y-4">
+            <div class="bg-slate-950 p-5 rounded-2xl border border-slate-800 space-y-4">
+                <h3 class="text-sm font-black text-sky-400 uppercase">隨堂問答（請選擇正確答案）</h3>
+                <p class="text-xs md:text-sm font-bold">在真教會參與宣道、探訪等聖工，其「永恆價值」的根基建立在什麼原則上？</p>
+                <div class="space-y-2 text-xs md:text-sm" id="quiz-box">
+                    <button onclick="checkAnswer(1)" class="w-full text-left p-3.5 bg-slate-900 border border-slate-800 rounded-xl hover:bg-slate-800 transition-colors flex justify-between items-center">
+                        <span>1. 建立在傳道與負責人對我們能力的讚賞上</span>
+                        <i data-lucide="circle" class="w-4 h-4"></i>
+                    </button>
+                    <button onclick="checkAnswer(2)" class="w-full text-left p-3.5 bg-slate-900 border border-slate-800 rounded-xl hover:bg-slate-800 transition-colors flex justify-between items-center">
+                        <span>2. 建立在「地上勞苦是徒然、唯有天國的果效能隨著我們到永生」的真理上</span>
+                        <i data-lucide="circle" class="w-4 h-4"></i>
+                    </button>
+                    <button onclick="checkAnswer(3)" class="w-full text-left p-3.5 bg-slate-900 border border-slate-800 rounded-xl hover:bg-slate-800 transition-colors flex justify-between items-center">
+                        <span>3. 建立在能跟別的信徒攀比帶人成果的虛榮上</span>
+                        <i data-lucide="circle" class="w-4 h-4"></i>
+                    </button>
+                </div>
+                <div id="expl-box" class="hidden p-4 rounded-xl bg-sky-950/40 border border-sky-500/20 text-xs text-sky-300 leading-relaxed">
+                    <b>正確答案是 2！解答說明：</b><br>
+                    神在《啟示錄 14:13》宣告，在主裡面息了世上勞苦的人，做工的果效會隨著他們，拯救靈魂的聖工有不滅的永恆價值。
+                </div>
+            </div>
+        </div>
+
+        <!-- Mark as read -->
+        <div class="flex justify-between items-center border-t border-slate-800 pt-6">
+            <button onclick="toggleCompleted()" id="complete-btn" class="px-5 py-2.5 rounded-xl text-xs font-bold border transition-colors flex items-center gap-1.5"></button>
+            <span class="text-[10px] text-slate-500">已自動同步您的學習狀態至首頁</span>
+        </div>
+    </div>
+
+    <script>
+        const pptData = [
+            "地上的勞苦，成果將隨肉體一同逝去。<br>但拯救霛魂的聖作，其果效將帶到天國、存留到永恆。",
+            "萬有的真神不需要凡人服事。<br>但神賜下特權，看我們為忠心，讓我們有分於天國的偉大聖工。",
+            "各盡其職的配搭十分重要。<br>撒種的、澆灌的、接待的、暗中代禱的，在大溪禾場一樣寶貴。",
+            "不做討人喜悅的眼見服事。<br>傳道在就拼命，傳道不在就退縮是不對的。我們的神在暗中看著我們的心志。",
+            "大溪羅浮福音中心是全員的禾場。<br>不要當個冷漠、不願付出的閒雜人，全大溪教會人人有份！"
+        ];
+        let currentSlide = 0;
+        const lessonId = 1;
+
+        window.onload = function() {
+            syncCompletedBtn();
+            renderSlide();
+            lucide.createIcons();
+        };
+
+        function switchLessonTab(tab) {
+            const tabs = ['verbatim', 'ppt', 'quiz'];
+            tabs.forEach(t => {
+                document.getElementById(`content-${t}`).classList.add('hidden');
+                document.getElementById(`tab-${t}`).className = "flex-1 py-3 text-center rounded-xl text-slate-400";
+            });
+            document.getElementById(`content-${tab}`).classList.remove('hidden');
+            document.getElementById(`tab-${tab}`).className = "flex-1 py-3 text-center rounded-xl bg-sky-600 text-white shadow";
+        }
+
+        function renderSlide() {
+            document.getElementById('slide-text').innerHTML = pptData[currentSlide];
+            document.getElementById('slide-num').innerText = `Slide ${currentSlide + 1} / ${pptData.length}`;
+        }
+        function prevSlide() { currentSlide = currentSlide > 0 ? currentSlide - 1 : pptData.length - 1; renderSlide(); }
+        function nextSlide() { currentSlide = currentSlide < pptData.length - 1 ? currentSlide + 1 : 0; renderSlide(); }
+
+        function checkAnswer(ans) {
+            const box = document.getElementById('expl-box');
+            if (ans === 2) {
+                box.classList.remove('hidden');
+                const quizzes = JSON.parse(localStorage.getItem('tjc_daxi_completed_quizzes_v2') || '[]');
+                if (!quizzes.includes(lessonId)) {
+                    quizzes.push(lessonId);
+                    localStorage.setItem('tjc_daxi_completed_quizzes_v2', JSON.stringify(quizzes));
+                }
+                const completed = JSON.parse(localStorage.getItem('tjc_daxi_completed_lessons_v2') || '[]');
+                if (!completed.includes(lessonId)) {
+                    completed.push(lessonId);
+                    localStorage.setItem('tjc_daxi_completed_lessons_v2', JSON.stringify(completed));
+                    syncCompletedBtn();
+                }
+            } else {
+                alert("答錯囉，請重新選擇正確答案！");
+            }
+        }
+
+        function toggleCompleted() {
+            const completed = JSON.parse(localStorage.getItem('tjc_daxi_completed_lessons_v2') || '[]');
+            const idx = completed.indexOf(lessonId);
+            if (idx > -1) {
+                completed.splice(idx, 1);
+            } else {
+                completed.push(lessonId);
+            }
+            localStorage.setItem('tjc_daxi_completed_lessons_v2', JSON.stringify(completed));
+            syncCompletedBtn();
+        }
+
+        function syncCompletedBtn() {
+            const completed = JSON.parse(localStorage.getItem('tjc_daxi_completed_lessons_v2') || '[]');
+            const btn = document.getElementById('complete-btn');
+            if (completed.includes(lessonId)) {
+                btn.className = "px-5 py-2.5 rounded-xl text-xs font-bold border border-emerald-500/20 bg-emerald-500/10 text-emerald-400 flex items-center gap-1.5";
+                btn.innerHTML = `<i data-lucide="check-check" class="w-4 h-4"></i> <span>已研讀本課</span>`;
+            } else {
+                btn.className = "px-5 py-2.5 rounded-xl text-xs font-bold border border-sky-600 bg-sky-600 text-white flex items-center gap-1.5";
+                btn.innerHTML = `<i data-lucide="check-circle" class="w-4 h-4"></i> <span>標記已研讀</span>`;
+            }
+            lucide.createIcons();
+        }
+
+        document.getElementById('ppt-card').addEventListener('dblclick', function() {
+            const card = document.getElementById('ppt-card');
+            if (card.classList.contains('fixed')) {
+                card.className = "bg-gradient-to-br from-slate-950 to-sky-950/20 border-2 border-slate-800 rounded-3xl p-8 min-h-[300px] flex flex-col justify-between";
+                document.body.style.overflow = "auto";
+            } else {
+                card.className = "fixed inset-0 z-50 bg-slate-950 p-16 flex flex-col justify-between";
+                document.body.style.overflow = "hidden";
+            }
+        });
+    </script>
+</body>
+</html>
+
